@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Barberia.Models.Servicio>
+
+@{
+    ViewData["Title"] = "Servicios";
+}
+
+<div class="contenedor">
+    <h1 class="titulo"><i class="fa-solid fa-scissors"></i> Servicios Disponibles</h1>
+
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alerta exito">@TempData["Mensaje"]</div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alerta error">@TempData["Error"]</div>
+    }
+
+    <div class="acciones">
+        <a asp-action="Crear" class="boton agregar"><i class="fa-solid fa-plus"></i> Agregar Servicio</a>
+    </div>
+
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                int i = 1;
+                foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@s.Nombre</td>
+                        <td>$@s.Precio</td>
+                        <td>@s.Descripcion</td>
+                        <td>
+                            <a asp-action="Editar" asp-route-id="@s.Id" class="boton editar"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a asp-action="Eliminar" asp-route-id="@s.Id" class="boton eliminar" onclick="return confirm('¿Eliminar este servicio?');">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+            else
+            {
+                <tr><td colspan="5">No hay servicios registrados.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Igual que tus vistas anteriores: negro/dorado */
+    body {
+        background-color: #111;
+        color: #f8f8f8;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
+
+    .contenedor {
+        margin: 40px auto;
+        width: 90%;
+        max-width: 900px;
+        background-color: #1b1b1b;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(255,215,0,0.2);
+    }
+
+    .titulo {
+        color: #ffd700;
+        margin-bottom: 25px;
+    }
+
+    .tabla {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+        .tabla th, .tabla td {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+        }
+
+        .tabla th {
+            color: #ffd700;
+            text-transform: uppercase;
+        }
+
+    .boton {
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .agregar {
+        background-color: #ffd700;
+    }
+
+    .editar {
+        background-color: #00c851;
+        color: white;
+        margin-right: 5px;
+    }
+
+    .eliminar {
+        background-color: #ff4444;
+        color: white;
+    }
+
+    .editar:hover {
+        background-color: #33d475;
+    }
+
+    .eliminar:hover {
+        background-color: #ff6666;
+    }
+
+    .alerta {
+        margin: 10px auto;
+        padding: 12px;
+        border-radius: 10px;
+        width: 80%;
+        font-weight: bold;
+        animation: aparecer 0.6s ease;
+    }
+
+        .alerta.exito {
+            background-color: #2bff6a1a;
+            color: #2bff6a;
+            border: 1px solid #2bff6a;
+        }
+
+        .alerta.error {
+            background-color: #ff44441a;
+            color: #ff4444;
+            border: 1px solid #ff4444;
+        }
+    @@keyframes aparecer {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>

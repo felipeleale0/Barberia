@@ -1,0 +1,541 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\data\\barberiacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\data\\barberiacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\models\\turno.cs\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\models\\turno.cs\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\models\\barberoservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\models\\barberoservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\controllers\\barberoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\controllers\\barberoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\barberos\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\barberos\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\barberos\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\barberos\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\models\\barbero.cs\\barbero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\models\\barbero.cs\\barbero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\models\\servicio.cs\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\models\\servicio.cs\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\controllers\\serviciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\controllers\\serviciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\controllers\\contactocontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\controllers\\contactocontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\data\\barberiacontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\data\\barberiacontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\controllers\\turnocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\controllers\\turnocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\barberos\\eliminar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\barberos\\eliminar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\barberos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\barberos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\servicio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\servicio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\turnos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\turnos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\turnos\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\turnos\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\barberia.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\barberia.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\wwwroot\\css\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\wwwroot\\css\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\contacto\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\contacto\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\migrations\\20251107212702_agregarfechahora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\migrations\\20251107212702_agregarfechahora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|c:\\users\\felip\\onedrive\\documents\\analista\\1 a\u00F1o\\barberia\\barberia\\migrations\\20251107193150_actualizarbarbero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3780983C-4AFD-4DB9-ADB3-59BC47A03594}|Barberia\\Barberia.csproj|solutionrelative:barberia\\migrations\\20251107193150_actualizarbarbero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\appsettings.json",
+              "RelativeDocumentMoniker": "Barberia\\appsettings.json",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\appsettings.json",
+              "RelativeToolTip": "Barberia\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-12T23:10:03.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Crear.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Crear.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Barberos\\Crear.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Crear.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Barberos\\Crear.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T21:30:56.91Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Editar.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Editar.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Barberos\\Editar.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Editar.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Barberos\\Editar.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T21:36:35.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BarberosController.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\BarberosController.cs",
+              "RelativeDocumentMoniker": "Barberia\\Controllers\\BarberosController.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\BarberosController.cs",
+              "RelativeToolTip": "Barberia\\Controllers\\BarberosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T21:30:34.142Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Barberia\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\appsettings.Development.json",
+              "RelativeToolTip": "Barberia\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-07T18:14:39.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BarberoServicio.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\BarberoServicio.cs",
+              "RelativeDocumentMoniker": "Barberia\\Models\\BarberoServicio.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\BarberoServicio.cs",
+              "RelativeToolTip": "Barberia\\Models\\BarberoServicio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T22:59:05.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BarberiaContext.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Data\\BarberiaContext.cs",
+              "RelativeDocumentMoniker": "Barberia\\Data\\BarberiaContext.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Data\\BarberiaContext.cs",
+              "RelativeToolTip": "Barberia\\Data\\BarberiaContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T22:53:53.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Turno.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\Turno.cs\\Turno.cs",
+              "RelativeDocumentMoniker": "Barberia\\Models\\Turno.cs\\Turno.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\Turno.cs\\Turno.cs",
+              "RelativeToolTip": "Barberia\\Models\\Turno.cs\\Turno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T22:54:51.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Barbero.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\Barbero.cs\\Barbero.cs",
+              "RelativeDocumentMoniker": "Barberia\\Models\\Barbero.cs\\Barbero.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\Barbero.cs\\Barbero.cs",
+              "RelativeToolTip": "Barberia\\Models\\Barbero.cs\\Barbero.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T21:30:29.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Servicio.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\Servicio.cs\\Servicio.cs",
+              "RelativeDocumentMoniker": "Barberia\\Models\\Servicio.cs\\Servicio.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Models\\Servicio.cs\\Servicio.cs",
+              "RelativeToolTip": "Barberia\\Models\\Servicio.cs\\Servicio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T23:05:07.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ServicioController.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\ServicioController.cs",
+              "RelativeDocumentMoniker": "Barberia\\Controllers\\ServicioController.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\ServicioController.cs",
+              "RelativeToolTip": "Barberia\\Controllers\\ServicioController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T22:52:52.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BarberiaContextFactory.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Data\\BarberiaContextFactory.cs",
+              "RelativeDocumentMoniker": "Barberia\\Data\\BarberiaContextFactory.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Data\\BarberiaContextFactory.cs",
+              "RelativeToolTip": "Barberia\\Data\\BarberiaContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T22:53:55.097Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ContactoController1.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\ContactoController1.cs",
+              "RelativeDocumentMoniker": "Barberia\\Controllers\\ContactoController1.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\ContactoController1.cs",
+              "RelativeToolTip": "Barberia\\Controllers\\ContactoController1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T17:19:31.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TurnoController.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\TurnoController.cs",
+              "RelativeDocumentMoniker": "Barberia\\Controllers\\TurnoController.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\TurnoController.cs",
+              "RelativeToolTip": "Barberia\\Controllers\\TurnoController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T21:31:23.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Eliminar.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Eliminar.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Barberos\\Eliminar.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Eliminar.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Barberos\\Eliminar.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T21:36:34.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Barberia\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Barberia\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T17:05:42.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Barberos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Barberos\\Index.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Barberos\\Index.cshtml",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T21:36:36.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T22:50:18.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Servicio\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Servicio\\Index.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Servicio\\Index.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Servicio\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T22:50:04.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T22:50:02.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T22:50:00.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Crear.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Turnos\\Crear.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Turnos\\Crear.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Turnos\\Crear.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Turnos\\Crear.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T21:32:13.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T17:16:34.377Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Turnos\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Turnos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Turnos\\Index.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Turnos\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T21:25:38.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20251107212702_AgregarFechaHora.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Migrations\\20251107212702_AgregarFechaHora.cs",
+              "RelativeDocumentMoniker": "Barberia\\Migrations\\20251107212702_AgregarFechaHora.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Migrations\\20251107212702_AgregarFechaHora.cs",
+              "RelativeToolTip": "Barberia\\Migrations\\20251107212702_AgregarFechaHora.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T21:27:02.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "20251107193150_ActualizarBarbero.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Migrations\\20251107193150_ActualizarBarbero.cs",
+              "RelativeDocumentMoniker": "Barberia\\Migrations\\20251107193150_ActualizarBarbero.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Migrations\\20251107193150_ActualizarBarbero.cs",
+              "RelativeToolTip": "Barberia\\Migrations\\20251107193150_ActualizarBarbero.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T19:31:50.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T20:17:36.411Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Barberia.csproj",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Barberia.csproj",
+              "RelativeDocumentMoniker": "Barberia\\Barberia.csproj",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Barberia.csproj",
+              "RelativeToolTip": "Barberia\\Barberia.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-07T19:38:46.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Program.cs",
+              "RelativeDocumentMoniker": "Barberia\\Program.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Program.cs",
+              "RelativeToolTip": "Barberia\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T17:11:34.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "estilos.css",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\wwwroot\\css\\estilos.css",
+              "RelativeDocumentMoniker": "Barberia\\wwwroot\\css\\estilos.css",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\wwwroot\\css\\estilos.css",
+              "RelativeToolTip": "Barberia\\wwwroot\\css\\estilos.css",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAAAF0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-07T17:15:20.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Contacto\\Index.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\Contacto\\Index.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\Contacto\\Index.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\Contacto\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T17:20:02.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Barberia\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Analista\\1 A\u00F1o\\Barberia\\Barberia\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Barberia\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T17:25:16.291Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
