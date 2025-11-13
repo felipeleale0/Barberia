@@ -1,0 +1,176 @@
+﻿@model Barberia.Models.ViewModels.UsuarioAdminEditViewModel
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Editar usuario";
+
+    var idStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    int currentUserId = 0;
+    int.TryParse(idStr, out currentUserId);
+    var isCurrentUser = Model.Id == currentUserId;
+
+    string estadoTexto;
+    string estadoClase;
+
+    if (Model.EstaEliminado)
+    {
+        estadoTexto = "Eliminado";
+        estadoClase = "pill-danger";
+    }
+    else if (Model.EstaBloqueado)
+    {
+        estadoTexto = "Bloqueado";
+        estadoClase = "pill-warning";
+    }
+    else
+    {
+        estadoTexto = "Activo";
+        estadoClase = "pill-success";
+    }
+
+    var rolTexto = Model.EsAdmin ? "Admin" : "Usuario";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin/users.css" asp-append-version="true" />
+}
+
+<div class="page-wrapper users-page">
+    <header class="users-header">
+        <div>
+            <h1 class="page-title">Editar usuario</h1>
+            <p class="page-subtitle">
+                Modificá sólo los datos válidos del usuario y de la persona asociada.
+            </p>
+        </div>
+
+        <div class="users-header-actions">
+            <a asp-action="Index" class="btn btn-outline">
+                Volver al listado
+            </a>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline">
+                Ver detalle
+            </a>
+        </div>
+    </header>
+
+    <!-- Cabecera rápida con username / email / estado -->
+    <section class="user-details">
+        <div class="user-details-header">
+            <div>
+                <div class="user-tag">@Model.NombreUsuario</div>
+                <div class="user-name">
+                    @(string.IsNullOrWhiteSpace(Model.Nombre) && string.IsNullOrWhiteSpace(Model.Apellido)
+                                        ? "Sin nombre cargado"
+                                        : $"{Model.Nombre} {Model.Apellido}")
+                </div>
+                @if (!string.IsNullOrEmpty(Model.CorreoElectronico))
+                {
+                    <div class="user-email">@Model.CorreoElectronico</div>
+                }
+            </div>
+
+            <div class="user-details-pills">
+                <span class="pill pill-normal">@rolTexto</span>
+                <span class="pill @estadoClase">@estadoTexto</span>
+
+                @if (Model.EsBarbero)
+                {
+                    <span class="pill pill-normal">Barbero / Empleado</span>
+                }
+            </div>
+        </div>
+    </section>
+
+    <form asp-action="Edit" method="post" class="user-form">
+        @* Id oculto *@
+        <input type="hidden" asp-for="Id" />
+
+        <div asp-validation-summary="ModelOnly" class="form-errors"></div>
+
+        <!-- Sección: Datos de usuario -->
+        <section class="form-section">
+            <h2 class="form-section-title">Datos de usuario</h2>
+            <p class="form-section-subtitle">
+                Nombre de usuario y permisos. La contraseña se gestiona desde "Cambiar contraseña".
+            </p>
+
+            <div class="form-grid">
+                <div class="user-form-group">
+                    <label asp-for="NombreUsuario" class="form-label"></label>
+                    <input asp-for="NombreUsuario" class="form-control" />
+                    <span asp-validation-for="NombreUsuario" class="field-error"></span>
+                </div>
+
+                <div class="user-form-group">
+                    <label class="form-label">Estado</label>
+                    <div class="read-only-pill">
+                        <span class="pill @estadoClase">@estadoTexto</span>
+                    </div>
+                </div>
+
+                <div class="user-form-group">
+                    <label class="form-label">Rol</label>
+                    <div class="read-only-pill">
+                        <span class="pill pill-normal">@rolTexto</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-inline-options">
+                <label class="checkbox-row">
+                    <input asp-for="EsAdmin" class="form-check-input" />
+                    <span>@Html.DisplayNameFor(m => m.EsAdmin)</span>
+                </label>
+
+                @* Podrías evitar que se quite el admin a sí mismo si querés, eso se maneja mejor en el controller *@
+            </div>
+        </section>
+
+        <!-- Sección: Datos de persona -->
+        <section class="form-section">
+            <h2 class="form-section-title">Datos de persona</h2>
+            <p class="form-section-subtitle">
+                Información básica de la persona asociada al usuario.
+            </p>
+
+            <div class="form-grid">
+                <div class="user-form-group">
+                    <label asp-for="Nombre" class="form-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="field-error"></span>
+                </div>
+
+                <div class="user-form-group">
+                    <label asp-for="Apellido" class="form-label"></label>
+                    <input asp-for="Apellido" class="form-control" />
+                    <span asp-validation-for="Apellido" class="field-error"></span>
+                </div>
+
+                <div class="user-form-group user-form-group--full">
+                    <label asp-for="CorreoElectronico" class="form-label"></label>
+                    <input asp-for="CorreoElectronico" class="form-control" />
+                    <span asp-validation-for="CorreoElectronico" class="field-error"></span>
+                </div>
+            </div>
+
+            <div class="form-inline-options">
+                <label class="checkbox-row">
+                    <input asp-for="EsBarbero" class="form-check-input" />
+                    <span>@Html.DisplayNameFor(m => m.EsBarbero)</span>
+                </label>
+            </div>
+        </section>
+
+        <div class="page-actions user-form-actions">
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

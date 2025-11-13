@@ -1,0 +1,191 @@
+﻿/* Contenedor general del layout de auth */
+.auth-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top left, #1e293b, #020617);
+}
+
+/* Wrapper del card */
+.login-wrapper {
+    width: 100%;
+    max-width: 420px;
+    padding: 1.5rem;
+}
+
+/* Card de login */
+.login-card {
+    background: #0b1120;
+    color: #e5e7eb;
+    padding: 2rem 2.25rem;
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* Header del card */
+.login-header {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: #facc15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.login-title {
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.login-subtitle {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+/* Inputs */
+.login-card .form-label {
+    font-size: 0.85rem;
+    color: #e5e7eb;
+}
+
+.login-card .form-control {
+    background-color: #020617;
+    border: 1px solid #1f2937;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+}
+
+    .login-card .form-control:focus {
+        background-color: #020617;
+        border-color: #facc15;
+        box-shadow: 0 0 0 0.15rem rgba(250, 204, 21, 0.35);
+    }
+
+/* Botón */
+.btn-login {
+    background: #facc15;
+    color: #111827;
+    border-radius: 999px;
+    font-weight: 600;
+    border: none;
+    padding: 0.55rem 1rem;
+    font-size: 0.95rem;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+    .btn-login:hover {
+        background: #eab308;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+/* credenciales demo */
+.login-demo-credentials {
+    margin-bottom: 1.2rem;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px dashed rgba(148, 163, 184, 0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem; /* un poco más grande */
+}
+
+
+/* wrapper del input de password + botón */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .password-wrapper .form-control {
+        padding-right: 3rem;
+    }
+
+.password-toggle {
+    position: absolute;
+    right: 0.6rem;
+    border: none;
+    background: transparent;
+    color: #9ca3af;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+    .password-toggle:hover {
+        color: #f9fafb;
+    }
+
+/* links inferiores */
+.login-footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+    .login-footer-links a {
+        color: #e5e7eb;
+        text-decoration: none;
+    }
+
+        .login-footer-links a:hover {
+            text-decoration: underline;
+        }
+
+
+.demo-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.demo-label {
+    color: #cbd5f5;
+    font-weight: 500;
+}
+
+.demo-value {
+    font-weight: 700;
+    color: #facc15;
+}
+
+.btn-clipboard {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.9);
+    background: transparent;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s;
+    padding: 0;
+}
+
+    .btn-clipboard:hover {
+        background: rgba(15, 23, 42, 0.9);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+        border-color: #facc15;
+    }

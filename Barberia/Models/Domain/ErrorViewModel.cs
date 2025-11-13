@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Barberia.Models
+namespace Barberia.Models.Domain
 {
     [NotMapped]
     public class ErrorViewModel

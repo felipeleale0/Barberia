@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Barberia.Data;
-using Barberia.Models;
+using Barberia.Models.Domain;
 
 namespace Barberia.Controllers
 {

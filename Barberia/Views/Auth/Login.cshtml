@@ -1,0 +1,136 @@
+﻿@model Barberia.Models.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/auth/login.css" asp-append-version="true" />
+}
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="login-logo">💈</div>
+            <div>
+                <h1 class="login-title">Barbería</h1>
+                <p class="login-subtitle">Ingresá para gestionar tus turnos</p>
+            </div>
+        </div>
+
+        <!-- Credenciales de prueba -->
+        <div class="login-demo-credentials">
+            <div class="demo-row">
+                <span class="demo-label">Usuario demo:</span>
+                <span class="demo-value">test</span>
+                <button type="button"
+                        class="btn-clipboard"
+                        data-copy-text="test"
+                        aria-label="Copiar usuario demo">
+                    <i class="bi bi-clipboard"></i>
+                </button>
+            </div>
+
+            <div class="demo-row">
+                <span class="demo-label">Password:</span>
+                <span class="demo-value">123456</span>
+                <button type="button"
+                        class="btn-clipboard"
+                        data-copy-text="123456"
+                        aria-label="Copiar contraseña demo">
+                    <i class="bi bi-clipboard"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <div class="password-wrapper">
+                    <input asp-for="Password" class="form-control" type="password" />
+                    <button type="button" id="togglePassword" class="password-toggle" aria-label="Mostrar u ocultar contraseña">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <button type="submit" class="btn btn-login w-100">
+                Entrar
+            </button>
+        </form>
+
+        <div class="login-footer-links">
+            <a asp-controller="Auth" asp-action="ForgotPassword">¿Olvidaste tu contraseña?</a>
+            <span>·</span>
+            <a asp-controller="Auth" asp-action="Register">Registrate</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        (function () {
+            // Toggle ver/ocultar password
+            const pwdInput = document.getElementById('@Html.IdFor(m => m.Password)');
+            const toggleBtn = document.getElementById('togglePassword');
+            if (pwdInput && toggleBtn) {
+                const icon = toggleBtn.querySelector('i');
+
+                toggleBtn.addEventListener('click', function () {
+                    const isPassword = pwdInput.getAttribute('type') === 'password';
+                    pwdInput.setAttribute('type', isPassword ? 'text' : 'password');
+
+                    if (isPassword) {
+                        icon.classList.remove('bi-eye');
+                        icon.classList.add('bi-eye-slash');
+                    } else {
+                        icon.classList.remove('bi-eye-slash');
+                        icon.classList.add('bi-eye');
+                    }
+                });
+            }
+
+            // Botones de copiar demo (usuario y password)
+            const copyButtons = document.querySelectorAll('.btn-clipboard');
+            copyButtons.forEach(btn => {
+                btn.addEventListener('click', async function () {
+                    const text = this.getAttribute('data-copy-text');
+                    const icon = this.querySelector('i');
+
+                    try {
+                        await navigator.clipboard.writeText(text);
+
+                        if (icon) {
+                            icon.classList.remove('bi-clipboard');
+                            icon.classList.add('bi-clipboard-check');
+                        }
+
+                        setTimeout(() => {
+                            if (icon) {
+                                icon.classList.remove('bi-clipboard-check');
+                                icon.classList.add('bi-clipboard');
+                            }
+                        }, 1500);
+                    } catch (e) {
+                        alert('No se pudo copiar al portapapeles. Probá copiarlo manualmente.');
+                    }
+                });
+            });
+        })();
+    </script>
+}
