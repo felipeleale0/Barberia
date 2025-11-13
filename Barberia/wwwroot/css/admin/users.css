@@ -1,0 +1,495 @@
+﻿/* Página de usuarios */
+.users-page {
+    padding: 2rem 2.5rem;
+}
+
+/* Header */
+.users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.users-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.users-header-actions .inline-form {
+    margin: 0;
+}
+
+.users-header-actions .btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+}
+
+/* Tabla */
+.users-table-wrapper {
+    margin-top: 0.5rem;
+    overflow-x: auto;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+    .users-table thead tr {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 0.7rem 0.75rem;
+        text-align: left;
+    }
+
+    .users-table th {
+        font-weight: 500;
+        color: #6b7280;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .users-table tbody tr:nth-child(odd) {
+        background: #f9fafb;
+    }
+
+    .users-table tbody tr:nth-child(even) {
+        background: #ffffff;
+    }
+
+    .users-table tbody tr:hover {
+        background: #eef2ff;
+    }
+
+/* Columnas especiales */
+.col-center {
+    text-align: center;
+}
+
+.col-date {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.col-actions {
+    width: 1%;
+    white-space: nowrap;
+}
+
+.col-usuario {
+    white-space: nowrap;
+}
+
+/* Etiquetas */
+.user-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #111827;
+}
+
+.user-email {
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+/* Pills de estado */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.pill-admin {
+    background: #fef9c3;
+    color: #92400e;
+}
+
+.pill-normal {
+    background: #e5e7eb;
+    color: #4b5563;
+}
+
+.pill-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.pill-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.pill-danger {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Acciones */
+.user-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: flex-end;
+}
+
+/* versión compacta para la tabla principal */
+.user-actions--compact {
+    flex-wrap: nowrap;
+}
+
+
+.inline-form {
+    display: inline-block;
+    margin: 0;
+}
+
+/* Botones chicos y suaves para esta tabla */
+.btn-action {
+    border-radius: 999px;
+    border: 1px solid transparent;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Variante suave (gris) */
+.btn-soft {
+    border-color: #e5e7eb;
+    background: #ffffff;
+    color: #111827;
+}
+
+    .btn-soft:hover {
+        background: #f3f4f6;
+        border-color: #d1d5db;
+    }
+
+/* Variante azul suave */
+.btn-primary-soft {
+    border-color: #0ea5e9;
+    background: #0ea5e9;
+    color: #0f172a;
+}
+
+    .btn-primary-soft:hover {
+        background: #0284c7;
+        border-color: #0284c7;
+        color: #f9fafb;
+    }
+
+/* Variante roja suave */
+.btn-danger-soft {
+    border-color: #fecaca;
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+    .btn-danger-soft:hover {
+        background: #fecaca;
+        border-color: #fca5a5;
+    }
+
+/* Estado vacío */
+.users-empty {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+
+/* Detalle de usuario */
+.user-details {
+    margin-top: 1rem;
+}
+
+.user-details-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.user-details-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: flex-end;
+}
+
+.user-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.user-details-block {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+}
+
+    .user-details-block h3 {
+        margin-top: 0;
+        margin-bottom: 0.7rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    .user-details-block dl {
+        margin: 0;
+    }
+
+    .user-details-block dt {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #6b7280;
+    }
+
+    .user-details-block dd {
+        margin: 0 0 0.6rem 0;
+        font-size: 0.9rem;
+    }
+
+
+/* ===== FORMULARIOS DE USUARIO (Create/Edit) ===== */
+
+.user-form {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+/* resumen de errores */
+.form-errors {
+    margin-bottom: 0.5rem;
+    color: #b91c1c;
+    font-size: 0.85rem;
+}
+
+/* Secciones */
+.form-section {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+.form-section-title {
+    margin: 0 0 0.1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.form-section-subtitle {
+    margin: 0 0 1rem 0;
+    font-size: 0.82rem;
+    color: #6b7280;
+}
+
+/* Grid de campos */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem 1.25rem;
+}
+
+/* Grupo de campo */
+.user-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.user-form-group--full {
+    grid-column: 1 / -1;
+}
+
+/* Label + input */
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+}
+
+.user-form-group .form-control {
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    background: #ffffff;
+}
+
+    .user-form-group .form-control:focus {
+        border-color: #0ea5e9;
+        box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.15);
+        background: #f9fafb;
+    }
+
+/* Errores de campo */
+.field-error {
+    font-size: 0.78rem;
+    color: #b91c1c;
+}
+
+/* Checkboxes inline */
+.form-inline-options {
+    margin-top: 0.75rem;
+}
+
+.checkbox-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.88rem;
+    color: #111827;
+}
+
+    .checkbox-row input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+    }
+
+/* Acciones del form */
+.user-form-actions {
+    justify-content: flex-end;
+    margin-top: 0.25rem;
+}
+
+/* Filtros de usuarios */
+.users-filters {
+    margin-bottom: 1.5rem;
+}
+
+.filters-form {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* Input de búsqueda */
+.input-search {
+    flex: 1 1 260px;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #e4e6f1;
+    background: #f7f8fc;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+    .input-search::placeholder {
+        color: #a3a8bd;
+    }
+
+    .input-search:focus {
+        background: #ffffff;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+    }
+
+/* Select de rol */
+.select-filter {
+    flex: 0 0 auto;
+    min-width: 190px;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #e4e6f1;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    color: #374151;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7L10 12L15 7' stroke='%2394A3B8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 14px;
+    padding-right: 2.4rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .select-filter:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+    }
+
+/* Botón Filtrar */
+.btn-filter {
+    flex: 0 0 auto;
+    border: none;
+    padding: 0.6rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00a3ff, #0066ff);
+    box-shadow: 0 8px 16px rgba(0, 102, 255, 0.25);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+}
+
+    .btn-filter:hover {
+        filter: brightness(1.05);
+        box-shadow: 0 10px 18px rgba(0, 102, 255, 0.3);
+        transform: translateY(-1px);
+    }
+
+    .btn-filter:active {
+        transform: translateY(1px);
+        box-shadow: 0 4px 10px rgba(0, 102, 255, 0.2);
+    }
+
+/* Responsive: en pantallas chicas, apilar */
+@media (max-width: 768px) {
+    .filters-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .select-filter,
+    .btn-filter {
+        width: 100%;
+    }
+
+    .btn-filter {
+        text-align: center;
+        justify-content: center;
+    }
+}

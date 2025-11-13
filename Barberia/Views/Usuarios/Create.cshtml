@@ -1,0 +1,106 @@
+﻿@model Barberia.Models.ViewModels.UsuarioAdminCreateViewModel
+
+@{
+    ViewData["Title"] = "Nuevo usuario";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin/users.css" asp-append-version="true" />
+}
+
+<div class="page-wrapper users-page">
+    <header class="users-header">
+        <div>
+            <h1 class="page-title">Nuevo usuario</h1>
+            <p class="page-subtitle">
+                Crear usuario, persona y, si corresponde, empleado/barbero.
+            </p>
+        </div>
+        <div class="users-header-actions">
+            <a asp-action="Index" class="btn btn-outline">Volver al listado</a>
+        </div>
+    </header>
+
+    <form asp-action="Create" method="post" class="user-form">
+        <div asp-validation-summary="ModelOnly" class="form-errors"></div>
+
+        <!-- Sección: Datos de usuario -->
+        <section class="form-section">
+            <h2 class="form-section-title">Datos de usuario</h2>
+            <p class="form-section-subtitle">
+                Credenciales y permisos para acceder al sistema.
+            </p>
+
+            <div class="form-grid">
+                <div class="user-form-group">
+                    <label asp-for="NombreUsuario" class="form-label"></label>
+                    <input asp-for="NombreUsuario" class="form-control" />
+                    <span asp-validation-for="NombreUsuario" class="field-error"></span>
+                </div>
+
+                <div class="user-form-group">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" type="password" />
+                    <span asp-validation-for="Password" class="field-error"></span>
+                </div>
+
+                <div class="user-form-group">
+                    <label asp-for="ConfirmPassword" class="form-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                    <span asp-validation-for="ConfirmPassword" class="field-error"></span>
+                </div>
+            </div>
+
+            <div class="form-inline-options">
+                <label class="checkbox-row">
+                    <input asp-for="EsAdmin" class="form-check-input" />
+                    <span>@Html.DisplayNameFor(m => m.EsAdmin)</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- Sección: Datos de persona -->
+        <section class="form-section">
+            <h2 class="form-section-title">Datos de persona</h2>
+            <p class="form-section-subtitle">
+                Información básica de la persona asociada al usuario.
+            </p>
+
+            <div class="form-grid">
+                <div class="user-form-group">
+                    <label asp-for="Nombre" class="form-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="field-error"></span>
+                </div>
+
+                <div class="user-form-group">
+                    <label asp-for="Apellido" class="form-label"></label>
+                    <input asp-for="Apellido" class="form-control" />
+                    <span asp-validation-for="Apellido" class="field-error"></span>
+                </div>
+
+                <div class="user-form-group user-form-group--full">
+                    <label asp-for="CorreoElectronico" class="form-label"></label>
+                    <input asp-for="CorreoElectronico" class="form-control" />
+                    <span asp-validation-for="CorreoElectronico" class="field-error"></span>
+                </div>
+            </div>
+
+            <div class="form-inline-options">
+                <label class="checkbox-row">
+                    <input asp-for="EsBarbero" class="form-check-input" />
+                    <span>@Html.DisplayNameFor(m => m.EsBarbero)</span>
+                </label>
+            </div>
+        </section>
+
+        <div class="page-actions user-form-actions">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Index" class="btn btn-outline">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

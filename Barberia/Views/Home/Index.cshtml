@@ -1,30 +1,17 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Inicio";
 }
 
-<div class="contenedor">
-    <h1>Bienvenido a 💈 Barbería</h1>
-    <p>Tu estilo, nuestra pasión. Gestioná turnos, conocé a nuestros barberos y contactanos fácilmente.</p>
-    <p>
-        <a href="/Turnos" class="boton">Ver Turnos</a>
-        <a href="/Barberos" class="boton">Nuestro Equipo</a>
-        <a href="/Contacto" class="boton">Contacto</a>
+<div class="page-wrapper">
+    <h1 class="page-title">Bienvenido a 💈 Barbería</h1>
+
+    <p class="page-subtitle">
+        Tu estilo, nuestra pasión. Gestioná turnos, conocé a nuestros barberos y contactanos fácilmente.
     </p>
+
+    <div class="page-actions">
+        <a asp-controller="Turnos" asp-action="Index" class="btn btn-primary">Ver Turnos</a>
+        <a asp-controller="Barberos" asp-action="Index" class="btn btn-secondary">Nuestro Equipo</a>
+        <a asp-controller="Contacto" asp-action="Index" class="btn btn-outline">Contacto</a>
+    </div>
 </div>
-
-<style>
-    .boton {
-        display: inline-block;
-        background-color: #ffd700;
-        color: #000;
-        padding: 10px 20px;
-        margin: 10px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-    .boton:hover { background-color: #ffea70; }
-</style>
-
