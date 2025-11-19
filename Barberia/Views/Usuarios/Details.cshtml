@@ -1,0 +1,172 @@
+﻿@using System.Security.Claims
+@model Barberia.Models.Domain.Usuario
+
+@{
+    ViewData["Title"] = "Detalle de usuario";
+
+    var idStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    int currentUserId = 0;
+    int.TryParse(idStr, out currentUserId);
+    var isCurrentUser = Model.Id == currentUserId;
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin/users.css" asp-append-version="true" />
+}
+
+<div class="page-wrapper users-page">
+    <header class="users-header">
+        <div>
+            <h1 class="page-title">Detalle de usuario</h1>
+            <p class="page-subtitle">
+                Información completa del usuario, persona asociada y estado.
+            </p>
+        </div>
+
+        <div class="users-header-actions">
+            <a asp-action="Index" class="btn btn-outline">
+                Volver al listado
+            </a>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+                Editar
+            </a>
+
+            @* Solo si NO soy yo y NO está eliminado *@
+            @if (!isCurrentUser && !Model.EstaEliminado)
+            {
+                @if (!Model.EstaBloqueado)
+                {
+                    <form asp-action="Bloquear"
+                          asp-route-id="@Model.Id"
+                          method="post"
+                          class="inline-form">
+                        <button type="submit" class="btn btn-outline">
+                            Bloquear
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <form asp-action="Desbloquear"
+                          asp-route-id="@Model.Id"
+                          method="post"
+                          class="inline-form">
+                        <button type="submit" class="btn btn-outline">
+                            Desbloquear
+                        </button>
+                    </form>
+                }
+
+                <form asp-action="Eliminar"
+                      asp-route-id="@Model.Id"
+                      method="post"
+                      class="inline-form">
+                    <button type="submit"
+                            class="btn btn-danger-soft"
+                            onclick="return confirm('¿Eliminar lógicamente este usuario?');">
+                        Eliminar
+                    </button>
+                </form>
+            }
+        </div>
+    </header>
+
+    <section class="user-details">
+        <div class="user-details-header">
+            <div>
+                <div class="user-tag">@Model.NombreUsuario</div>
+                <div class="user-name">
+                    @Model.Persona?.Nombre @Model.Persona?.Apellido
+                </div>
+                @if (!string.IsNullOrEmpty(Model.Persona?.CorreoElectronico))
+                {
+                    <div class="user-email">@Model.Persona.CorreoElectronico</div>
+                }
+            </div>
+
+            <div class="user-details-pills">
+                @if (Model.EsAdmin)
+                {
+                    <span class="pill pill-admin">Admin</span>
+                }
+                else
+                {
+                    <span class="pill pill-normal">Usuario</span>
+                }
+
+                @if (Model.EstaEliminado)
+                {
+                    <span class="pill pill-danger">Eliminado</span>
+                }
+                else if (Model.EstaBloqueado)
+                {
+                    <span class="pill pill-warning">Bloqueado</span>
+                }
+                else
+                {
+                    <span class="pill pill-success">Activo</span>
+                }
+
+                @if (Model.Persona?.EsBarbero == true)
+                {
+                    <span class="pill pill-normal">Barbero / Empleado</span>
+                }
+            </div>
+        </div>
+
+        <div class="user-details-grid">
+            <div class="user-details-block">
+                <h3>Datos de usuario</h3>
+                <dl>
+                    <dt>Id</dt>
+                    <dd>@Model.Id</dd>
+
+                    <dt>Nombre de usuario</dt>
+                    <dd>@Model.NombreUsuario</dd>
+
+                    <dt>Es administrador</dt>
+                    <dd>@(Model.EsAdmin ? "Sí" : "No")</dd>
+
+                    <dt>Bloqueado</dt>
+                    <dd>@(Model.EstaBloqueado ? "Sí" : "No")</dd>
+
+                    <dt>Eliminado</dt>
+                    <dd>@(Model.EstaEliminado ? "Sí" : "No")</dd>
+
+                    <dt>Creado</dt>
+                    <dd>@Model.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</dd>
+                </dl>
+            </div>
+
+            <div class="user-details-block">
+                <h3>Persona asociada</h3>
+                @if (Model.Persona == null)
+                {
+                    <p>No hay persona asociada.</p>
+                }
+                else
+                {
+                    <dl>
+                        <dt>Nombre</dt>
+                        <dd>@Model.Persona.Nombre</dd>
+
+                        <dt>Apellido</dt>
+                        <dd>@Model.Persona.Apellido</dd>
+
+                        <dt>Correo electrónico</dt>
+                        <dd>
+                            @(string.IsNullOrEmpty(Model.Persona.CorreoElectronico)
+                                                    ? "Sin correo"
+                                                    : Model.Persona.CorreoElectronico)
+                    </dd>
+
+                        <dt>Es barbero / empleado</dt>
+                        <dd>@(Model.Persona.EsBarbero ? "Sí" : "No")</dd>
+                    </dl>
+                                }
+            </div>
+        </div>
+    </section>
+</div>

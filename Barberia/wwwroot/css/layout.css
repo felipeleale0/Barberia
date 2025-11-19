@@ -1,0 +1,262 @@
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #e5e7eb;
+}
+
+/* LAYOUT GENERAL */
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* HEADER */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #020617;
+    color: #f9fafb;
+    padding: 0.6rem 1.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.topbar-logo {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* CUERPO (SIDEBAR + CONTENIDO) */
+.layout-body {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #111827;
+    color: #fff;
+    padding-top: 1.25rem;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: #e5e7eb;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: background 0.15s ease, opacity 0.15s ease, padding-left 0.15s ease;
+}
+
+    .sidebar-nav li a:hover {
+        background: #1f2937;
+        opacity: 1;
+        padding-left: 1.75rem;
+    }
+
+    /* opción activa */
+    .sidebar-nav li a.active {
+        background: #facc15;
+        color: #111827;
+        font-weight: 600;
+        opacity: 1;
+    }
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+    flex: 1;
+    padding: 1.75rem 2rem;
+    overflow-y: auto;
+    background: #e5e7eb;
+}
+
+/* Tarjeta central por página */
+.page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.18);
+}
+
+/* Tipografía dentro de cada página */
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.page-subtitle {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+/* BOTONES */
+.page-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+.btn-primary {
+    background: #facc15;
+    color: #111827;
+}
+
+    .btn-primary:hover {
+        background: #eab308;
+    }
+
+.btn-secondary {
+    background: #0ea5e9;
+    color: #0f172a;
+}
+
+    .btn-secondary:hover {
+        background: #0284c7;
+    }
+
+.btn-outline {
+    background: transparent;
+    color: #111827;
+    border-color: #d1d5db;
+}
+
+    .btn-outline:hover {
+        background: #f3f4f6;
+    }
+
+/* USER MENU */
+.user-menu {
+    position: relative;
+}
+
+/* Botón que abre el menú */
+.user-menu-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+    .user-menu-button:hover {
+        background: rgba(15, 23, 42, 0.7);
+    }
+
+/* Avatar */
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: #4b5563;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.user-info .user-name {
+    font-size: 0.85rem;
+}
+
+.user-menu-chevron {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* DROPDOWN */
+.user-menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.4rem);
+    background: #111827;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0;
+    min-width: 190px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Cuando el menú está abierto */
+.user-menu.open .user-menu-dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.user-menu-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-menu-dropdown li a,
+.user-menu-dropdown li button.logout-btn {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    display: block;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .user-menu-dropdown li a:hover,
+    .user-menu-dropdown li button.logout-btn:hover {
+        background: #1f2937;
+    }
+
+/* FOOTER */
+.footer {
+    background: #020617;
+    color: #9ca3af;
+    text-align: center;
+    padding: 0.75rem;
+    font-size: 0.8rem;
+}

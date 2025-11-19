@@ -1,34 +1,134 @@
-﻿<!DOCTYPE html>
+﻿@using System.Linq
+@using System.Security.Claims
+@{
+    var isLogged = User?.Identity?.IsAuthenticated ?? false;
+    var nombreUsuario = isLogged ? (User.Identity.Name ?? "Usuario") : "Invitado";
+
+    // ¿es admin?
+    var esAdmin = User?.HasClaim("EsAdmin", "True") ?? false;
+
+    // Iniciales muy simples: primeras letras de las primeras 2 palabras
+    var partes = nombreUsuario.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+    var iniciales = string.Concat(partes.Take(2).Select(p => char.ToUpper(p[0])));
+}
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Barbería</title>
+
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6310/6310294.png" type="image/png">
-    <link rel="stylesheet" href="~/css/estilos.css" asp-append-version="true" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+
+    @RenderSection("Styles", required: false)   
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">💈 <span>Barbería</span></div>
-            <ul class="menu">
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/Turnos">Turnos</a></li>
-                <li><a href="/Barberos">Barberos</a></li>
-                <li><a href="/Contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="layout">
+        <!-- HEADER SUPERIOR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="topbar-logo">💈 Barbería</span>
+            </div>
 
-    <main class="contenido">
-        @RenderBody()
-    </main>
+            <div class="topbar-right">
+                @if (isLogged)
+                {
+                    <div class="user-menu" id="userMenu">
+                        <button type="button" class="user-menu-button" id="userMenuToggle">
+                            <div class="user-avatar">
+                                @iniciales
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">@nombreUsuario</span>
+                            </div>
+                            <span class="user-menu-chevron">▾</span>
+                        </button>
 
-    <footer>
-        <p>© 2025 Barbería - Todos los derechos reservados</p>
-    </footer>
+                        <div class="user-menu-dropdown" id="userMenuDropdown">
+                            <ul>
+                                <li>
+                                    <a asp-controller="Auth" asp-action="ChangePassword">
+                                        Cambiar contraseña
+                                    </a>
+                                </li>
+                                <li>
+                                    <form asp-controller="Auth" asp-action="Logout" method="post">
+                                        <button type="submit" class="logout-btn">Cerrar sesión</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a asp-controller="Auth" asp-action="Login" class="login-link">Iniciar sesión</a>
+                }
+            </div>
+
+        </header>
+
+        <div class="layout-body">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Inicio</a></li>
+                        <li><a asp-controller="Turnos" asp-action="Index">Turnos</a></li>
+
+                        @if (esAdmin)
+                        {
+                            <li><a asp-controller="Usuarios" asp-action="Index">Usuarios</a></li>
+                        }
+
+                        <li><a asp-controller="Servicio" asp-action="Index">Servicios</a></li>
+                        <li><a asp-controller="Contacto" asp-action="Index">Contacto</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <main class="contenido main-content">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 Barbería - Todos los derechos reservados</p>
+        </footer>
+    </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menu = document.getElementById('userMenu');
+            const toggle = document.getElementById('userMenuToggle');
+
+            if (!menu || !toggle) return;
+
+            // Abrir/cerrar al hacer click en el botón
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('open');
+            });
+
+            // Cerrar si haces click en cualquier lado fuera
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('open');
+                }
+            });
+        });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-
