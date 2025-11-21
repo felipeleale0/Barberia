@@ -17,11 +17,14 @@ namespace Barberia.Models.Domain
         public bool EstaBloqueado { get; set; }
         public bool EstaEliminado { get; set; }
 
-        public DateTime CreatedAt { get; set; } 
+        public DateTime CreatedAt { get; set; }
+
+        // 🔹 para recuperación de contraseña
+        public string? PasswordResetToken { get; set; }
+        public DateTime? PasswordResetTokenExpiresAt { get; set; }
 
         // Navegación
         public Persona? Persona { get; set; }
         public List<Reserva> Reservas { get; set; } = new();
     }
-
 }

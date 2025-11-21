@@ -52,7 +52,9 @@ namespace Barberia.Migrations
                     EsAdmin = table.Column<bool>(type: "bit", nullable: false),
                     EstaBloqueado = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     EstaEliminado = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    PasswordResetToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PasswordResetTokenExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -210,12 +212,12 @@ namespace Barberia.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
-                columns: new[] { "Id", "Contrasena", "CreatedAt", "EsAdmin", "NombreUsuario" },
+                columns: new[] { "Id", "Contrasena", "CreatedAt", "EsAdmin", "NombreUsuario", "PasswordResetToken", "PasswordResetTokenExpiresAt" },
                 values: new object[,]
                 {
-                    { 2, "HASH_JUAN", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "juan" },
-                    { 3, "HASH_MARIO", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "mario" },
-                    { 4, "HASH_LUIS", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "luis" }
+                    { 2, "HASH_JUAN", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "juan", null, null },
+                    { 3, "HASH_MARIO", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "mario", null, null },
+                    { 4, "HASH_LUIS", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "luis", null, null }
                 });
 
             migrationBuilder.InsertData(

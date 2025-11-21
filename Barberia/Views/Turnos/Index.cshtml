@@ -1,20 +1,39 @@
 ﻿@model Barberia.Models.ViewModels.TurnoDisponibleViewModel
 
-@{
-    ViewData["Title"] = "Turnos";
+@section Styles {
+    <!-- estilos globales de “página tipo Users” -->
+    <link rel="stylesheet" href="~/css/admin/users.css" asp-append-version="true" />
+
+    <!-- opcional: estilos específicos de turnos -->
+    <link rel="stylesheet" href="~/css/shift/shift.css" asp-append-version="true" />
 }
 
-<div class="container mt-4">
-    <h2>Reservar turno</h2>
-    <p>Elegí la fecha del turno y reservá uno de los horarios disponibles.</p>
+<div class="users-page">
+    <div class="users-header">
+        <div>
+            <h2>Reservar turno</h2>
+            <p class="text-muted">
+                Elegí la fecha del turno y reservá uno de los horarios disponibles.
+            </p>
+        </div>
 
-    <form asp-action="Index" method="get" class="d-flex align-items-center mb-4 gap-2">
-        <label class="me-2">Fecha:</label>
-        <input type="date" name="fecha"
-               value="@Model.FechaSeleccionada.ToString("yyyy-MM-dd")"
-               class="form-control" style="max-width: 220px;" />
-        <button type="submit" class="btn btn-primary">Ver turnos</button>
-    </form>
+        <div class="users-header-actions">
+            <form asp-action="Index" method="get" class="filters-form">
+                <div class="date-filter-group">
+                    <label for="fecha" class="date-label">Fecha:</label>
+                    <input type="date"
+                           id="fecha"
+                           name="fecha"
+                           value="@Model.FechaSeleccionada.ToString("yyyy-MM-dd")"
+                           class="date-input" />
+                </div>
+
+                <button type="submit" class="btn btn-filter">
+                    Ver turnos
+                </button>
+            </form>
+        </div>
+    </div>
 
     @if (TempData["Error"] != null)
     {
@@ -27,61 +46,74 @@
 
     @if (!Model.Turnos.Any())
     {
-        <p>No hay turnos configurados para esta fecha.</p>
+        <p class="users-empty">No hay turnos configurados para esta fecha.</p>
     }
     else
     {
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Hora</th>
-                    <th>Barbero</th>
-                    <th>Servicio</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var t in Model.Turnos)
-                {
-                    <tr class="@(t.EstaDisponible ? "" : "table-secondary")">
-                        <td>@t.Hora</td>
-                        <td>@t.EmpleadoNombre</td>
-                        <td>
-                            @if (t.Servicios.Any())
-                            {
-                                <form asp-action="Reservar" method="post" class="d-flex gap-2">
-                                    <input type="hidden" name="turnoId" value="@t.TurnoId" />
-                                    <select name="servicioId" class="form-select">
-                                        @foreach (var s in t.Servicios)
-                                        {
-                                            <option value="@s.Id">
-                                                @s.Nombre (@s.Precio.ToString("C"))
-                                            </option>
-                                        }
-                                    </select>
-                                    @if (t.EstaDisponible)
-                                    {
-                                        <button type="submit" class="btn btn-success">
-                                            Reservar
-                                        </button>
-                                    }
-                                    else
-                                    {
-                                        <button type="button" class="btn btn-secondary" disabled>
-                                            Ocupado
-                                        </button>
-                                    }
-                                </form>
-                            }
-                            else
-                            {
-                                <span class="text-muted">Sin servicios asignados</span>
-                            }
-                        </td>
-                        <td></td>
+        <div class="users-table-wrapper">
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th class="col-hora">Hora</th>
+                        <th class="col-barbero">Barbero</th>
+                        <th class="col-servicio">Servicio</th>
+                        <th class="col-estado col-center">Estado</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var t in Model.Turnos)
+                    {
+                        <tr>
+                            <td class="col-hora col-date">@t.Hora</td>
+                            <td class="col-barbero col-usuario">@t.EmpleadoNombre</td>
+                            <td class="col-servicio">
+                                @if (t.Servicios.Any())
+                                {
+                                    <div class="user-actions user-actions--compact">
+                                        <form asp-action="Reservar" method="post" class="inline-form">
+                                            @Html.AntiForgeryToken()
+
+                                            <input type="hidden" name="turnoId" value="@t.TurnoId" />
+
+                                            <select name="servicioId"
+                                                    class="select-filter @(t.EstaDisponible ? "" : "select-disabled")"
+                                                    @(t.EstaDisponible ? "" : "disabled")>
+                                                @foreach (var s in t.Servicios)
+                                                {
+                                                    <option value="@s.Id">
+                                                        @s.Nombre (@s.Precio.ToString("C"))
+                                                    </option>
+                                                }
+                                            </select>
+
+                                            @if (t.EstaDisponible)
+                                            {
+                                                <button type="submit" class="btn-reservar-turno">
+                                                    Reservar
+                                                </button>
+                                            }
+                                        </form>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Sin servicios</span>
+                                }
+                            </td>
+                            <td class="col-estado col-center">
+                                @if (t.EstaDisponible)
+                                {
+                                    <span class="pill pill-success">Disponible</span>
+                                }
+                                else
+                                {
+                                    <span class="pill pill-danger">Ocupado</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 </div>
