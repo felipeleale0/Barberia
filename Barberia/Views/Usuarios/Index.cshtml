@@ -1,0 +1,164 @@
+﻿@model IEnumerable<Barberia.Models.Domain.Usuario>
+
+@{
+    ViewData["Title"] = "Administración de usuarios";
+    var currentUserId = ViewBag.CurrentUserId as int? ?? 0;
+    var selectedRol = ViewBag.Rol as string ?? "";
+    var searchText = ViewBag.Search as string ?? "";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin/users.css" asp-append-version="true" />
+}
+
+<div class="page-wrapper users-page">
+    <header class="users-header">
+        <div>
+            <h1 class="page-title">Administración de usuarios</h1>
+            <p class="page-subtitle">
+                Crear, editar, bloquear y ver usuarios del sistema.
+            </p>
+        </div>
+        <div class="users-header-actions">
+            <a asp-action="Create" class="btn btn-primary">Nuevo usuario</a>
+        </div>
+    </header>
+    <section class="users-filters">
+        <form asp-action="Index" method="get" class="filters-form">
+            <input type="text"
+                   name="search"
+                   value="@searchText"
+                   placeholder="Buscar por usuario o nombre..."
+                   class="input-search" />
+
+            <select name="rol" class="select-filter">
+                <option value="">Todos</option>
+                <option value="admin" selected="@(selectedRol == "admin" ? "selected" : null)">Admins</option>
+                <option value="barbero" selected="@(selectedRol == "barbero" ? "selected" : null)">Barberos / Empleados</option>
+                <option value="usuario" selected="@(selectedRol == "usuario" ? "selected" : null)">Usuarios comunes</option>
+            </select>
+
+            <button type="submit" class="btn-filter">
+                Filtrar
+            </button>
+        </form>
+    </section>
+
+    <section class="users-table-wrapper">
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th class="col-center">Admin</th>
+                    <th class="col-center">Empleado</th>  
+                    <th class="col-center">Estado</th>
+                    <th class="col-date">Creado</th>
+                    <th class="col-actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var u in Model)
+                {
+                    <tr>
+                        <td class="col-usuario">
+                            <span class="user-tag">@u.NombreUsuario</span>
+                        </td>
+                        <td>
+                            <div class="user-name">
+                                @u.Persona?.Nombre @u.Persona?.Apellido
+                            </div>
+                            @if (!string.IsNullOrEmpty(u.Persona?.CorreoElectronico))
+                            {
+                                <div class="user-email">@u.Persona.CorreoElectronico</div>
+                            }
+                        </td>
+                        <td class="col-center">
+                            @if (u.EsAdmin)
+                            {
+                                <span class="pill pill-admin">Admin</span>
+                            }
+                            else
+                            {
+                                <span class="pill pill-normal">Usuario</span>
+                            }
+                        </td>
+                        <td class="col-center">
+                            @if (u.Persona?.EsBarbero == true)
+                            {
+                                <span class="pill pill-barbero">Barbero</span>
+                            }
+                            else
+                            {
+                                <span class="pill pill-normal">No barbero</span>
+                            }
+                        </td>
+                        <td class="col-center">
+                            @if (u.EstaEliminado)
+                            {
+                                <span class="pill pill-danger">Eliminado</span>
+                            }
+                            else if (u.EstaBloqueado)
+                            {
+                                <span class="pill pill-warning">Bloqueado</span>
+                            }
+                            else
+                            {
+                                <span class="pill pill-success">Activo</span>
+                            }
+                        </td>
+                        <td class="col-date">
+                            @u.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")
+                        </td>
+                        <td class="col-actions">
+                            <div class="user-actions user-actions--compact">
+                                <a asp-action="Details"
+                                   asp-route-id="@u.Id"
+                                   class="btn-action btn-soft">
+                                    Ver
+                                </a>
+
+                                @* si NO soy yo y NO está eliminado, muestro bloquear/desbloquear *@
+                                @if (u.Id != currentUserId && !u.EstaEliminado)
+                                {
+                                    if (!u.EstaBloqueado)
+                                    {
+                                        <form asp-action="Bloquear"
+                                              asp-route-id="@u.Id"
+                                              method="post"
+                                              class="inline-form">
+                                            <button type="submit"
+                                                    class="btn-action btn-soft">
+                                                Bloquear
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form asp-action="Desbloquear"
+                                              asp-route-id="@u.Id"
+                                              method="post"
+                                              class="inline-form">
+                                            <button type="submit"
+                                                    class="btn-action btn-soft">
+                                                Desbloquear
+                                            </button>
+                                        </form>
+                                    }
+                                }
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @if (!Model.Any())
+        {
+            <div class="users-empty">
+                <p>No hay usuarios cargados.</p>
+            </div>
+        }
+    </section>
+</div>

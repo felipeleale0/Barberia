@@ -22,7 +22,22 @@ namespace Barberia.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Barberia.Models.Barbero", b =>
+            modelBuilder.Entity("Barberia.Models.Domain.BarberoServicio", b =>
+                {
+                    b.Property<int>("EmpleadoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServicioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmpleadoId", "ServicioId");
+
+                    b.HasIndex("ServicioId");
+
+                    b.ToTable("BarberoServicios");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Empleado", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,38 +45,18 @@ namespace Barberia.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AñosExperiencia")
+                    b.Property<int>("PersonaId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Especialidad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Barberos");
+                    b.HasIndex("PersonaId")
+                        .IsUnique();
+
+                    b.ToTable("Empleados");
                 });
 
-            modelBuilder.Entity("Barberia.Models.BarberoServicio", b =>
-                {
-                    b.Property<int>("BarberoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServicioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BarberoId", "ServicioId");
-
-                    b.HasIndex("ServicioId");
-
-                    b.ToTable("BarberoServicios");
-                });
-
-            modelBuilder.Entity("Barberia.Models.Servicio", b =>
+            modelBuilder.Entity("Barberia.Models.Domain.Estado", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,19 +68,29 @@ namespace Barberia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Servicios");
+                    b.ToTable("Estados");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Pendiente"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Confirmado"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Cancelado"
+                        });
                 });
 
-            modelBuilder.Entity("Barberia.Models.Turno", b =>
+            modelBuilder.Entity("Barberia.Models.Domain.Persona", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,77 +98,291 @@ namespace Barberia.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BarberoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Cliente")
+                    b.Property<string>("Apellido")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FechaHora")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CorreoElectronico")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<int>("ServicioId")
+                    b.Property<bool>("EsBarbero")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuarioId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BarberoId");
+                    b.HasIndex("UsuarioId")
+                        .IsUnique();
+
+                    b.ToTable("Personas");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Reserva", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("CostoTotal")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int>("EstadoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServicioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TurnoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EstadoId");
 
                     b.HasIndex("ServicioId");
+
+                    b.HasIndex("TurnoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Reservas");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Servicio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Servicios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descripcion = "Corte de cabello estándar.",
+                            Nombre = "Corte clásico",
+                            Precio = 2500m
+                        });
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Turno", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EmpleadoId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EstaDisponible")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("Hora")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpleadoId");
 
                     b.ToTable("Turnos");
                 });
 
-            modelBuilder.Entity("Barberia.Models.BarberoServicio", b =>
+            modelBuilder.Entity("Barberia.Models.Domain.Usuario", b =>
                 {
-                    b.HasOne("Barberia.Models.Barbero", "Barbero")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Contrasena")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<bool>("EsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("EstaBloqueado")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("EstaEliminado")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("NombreUsuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.BarberoServicio", b =>
+                {
+                    b.HasOne("Barberia.Models.Domain.Empleado", "Empleado")
                         .WithMany("BarberoServicios")
-                        .HasForeignKey("BarberoId")
+                        .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Barberia.Models.Servicio", "Servicio")
+                    b.HasOne("Barberia.Models.Domain.Servicio", "Servicio")
                         .WithMany("BarberoServicios")
                         .HasForeignKey("ServicioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Barbero");
+                    b.Navigation("Empleado");
 
                     b.Navigation("Servicio");
                 });
 
-            modelBuilder.Entity("Barberia.Models.Turno", b =>
+            modelBuilder.Entity("Barberia.Models.Domain.Empleado", b =>
                 {
-                    b.HasOne("Barberia.Models.Barbero", "Barbero")
-                        .WithMany()
-                        .HasForeignKey("BarberoId")
+                    b.HasOne("Barberia.Models.Domain.Persona", "Persona")
+                        .WithOne("Empleado")
+                        .HasForeignKey("Barberia.Models.Domain.Empleado", "PersonaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Barberia.Models.Servicio", "Servicio")
-                        .WithMany()
+                    b.Navigation("Persona");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Persona", b =>
+                {
+                    b.HasOne("Barberia.Models.Domain.Usuario", "Usuario")
+                        .WithOne("Persona")
+                        .HasForeignKey("Barberia.Models.Domain.Persona", "UsuarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Reserva", b =>
+                {
+                    b.HasOne("Barberia.Models.Domain.Estado", "Estado")
+                        .WithMany("Reservas")
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Barberia.Models.Domain.Servicio", "Servicio")
+                        .WithMany("Reservas")
                         .HasForeignKey("ServicioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Barberia.Models.Domain.Turno", "Turno")
+                        .WithMany("Reservas")
+                        .HasForeignKey("TurnoId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Barberia.Models.Domain.Usuario", "Usuario")
+                        .WithMany("Reservas")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Estado");
+
+                    b.Navigation("Servicio");
+
+                    b.Navigation("Turno");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Turno", b =>
+                {
+                    b.HasOne("Barberia.Models.Domain.Empleado", "Empleado")
+                        .WithMany("Turnos")
+                        .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Barbero");
-
-                    b.Navigation("Servicio");
+                    b.Navigation("Empleado");
                 });
 
-            modelBuilder.Entity("Barberia.Models.Barbero", b =>
+            modelBuilder.Entity("Barberia.Models.Domain.Empleado", b =>
                 {
                     b.Navigation("BarberoServicios");
+
+                    b.Navigation("Turnos");
                 });
 
-            modelBuilder.Entity("Barberia.Models.Servicio", b =>
+            modelBuilder.Entity("Barberia.Models.Domain.Estado", b =>
+                {
+                    b.Navigation("Reservas");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Persona", b =>
+                {
+                    b.Navigation("Empleado");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Servicio", b =>
                 {
                     b.Navigation("BarberoServicios");
+
+                    b.Navigation("Reservas");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Turno", b =>
+                {
+                    b.Navigation("Reservas");
+                });
+
+            modelBuilder.Entity("Barberia.Models.Domain.Usuario", b =>
+                {
+                    b.Navigation("Persona");
+
+                    b.Navigation("Reservas");
                 });
 #pragma warning restore 612, 618
         }
