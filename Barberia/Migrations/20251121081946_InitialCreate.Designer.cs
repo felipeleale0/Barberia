@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Barberia.Migrations
 {
     [DbContext(typeof(BarberiaContext))]
-    [Migration("20251121074834_InitialCreate")]
+    [Migration("20251121081946_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -38,6 +38,53 @@ namespace Barberia.Migrations
                     b.HasIndex("ServicioId");
 
                     b.ToTable("BarberoServicios");
+
+                    b.HasData(
+                        new
+                        {
+                            EmpleadoId = 2,
+                            ServicioId = 1
+                        },
+                        new
+                        {
+                            EmpleadoId = 2,
+                            ServicioId = 2
+                        },
+                        new
+                        {
+                            EmpleadoId = 2,
+                            ServicioId = 3
+                        },
+                        new
+                        {
+                            EmpleadoId = 3,
+                            ServicioId = 3
+                        },
+                        new
+                        {
+                            EmpleadoId = 3,
+                            ServicioId = 4
+                        },
+                        new
+                        {
+                            EmpleadoId = 3,
+                            ServicioId = 1
+                        },
+                        new
+                        {
+                            EmpleadoId = 4,
+                            ServicioId = 5
+                        },
+                        new
+                        {
+                            EmpleadoId = 4,
+                            ServicioId = 6
+                        },
+                        new
+                        {
+                            EmpleadoId = 4,
+                            ServicioId = 1
+                        });
                 });
 
             modelBuilder.Entity("Barberia.Models.Domain.Empleado", b =>
@@ -57,6 +104,23 @@ namespace Barberia.Migrations
                         .IsUnique();
 
                     b.ToTable("Empleados");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            PersonaId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            PersonaId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            PersonaId = 3
+                        });
                 });
 
             modelBuilder.Entity("Barberia.Models.Domain.Estado", b =>
@@ -90,6 +154,11 @@ namespace Barberia.Migrations
                         {
                             Id = 3,
                             Descripcion = "Cancelado"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descripcion = "Reservado"
                         });
                 });
 
@@ -129,6 +198,38 @@ namespace Barberia.Migrations
                         .IsUnique();
 
                     b.ToTable("Personas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Apellido = "Gómez",
+                            CorreoElectronico = "juan@barberia.local",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EsBarbero = true,
+                            Nombre = "Juan",
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Apellido = "Pérez",
+                            CorreoElectronico = "mario@barberia.local",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EsBarbero = true,
+                            Nombre = "Mario",
+                            UsuarioId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Apellido = "Rodríguez",
+                            CorreoElectronico = "luis@barberia.local",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EsBarbero = true,
+                            Nombre = "Luis",
+                            UsuarioId = 4
+                        });
                 });
 
             modelBuilder.Entity("Barberia.Models.Domain.Reserva", b =>
@@ -193,9 +294,44 @@ namespace Barberia.Migrations
                         new
                         {
                             Id = 1,
-                            Descripcion = "Corte de cabello estándar.",
+                            Descripcion = "Corte tradicional con tijera y máquina.",
                             Nombre = "Corte clásico",
-                            Precio = 2500m
+                            Precio = 5000m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descripcion = "Fade bajo, medio o alto, con terminaciones a navaja.",
+                            Nombre = "Corte degradado (Fade)",
+                            Precio = 6500m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descripcion = "Perfilado, rebaje y prolijo general.",
+                            Nombre = "Arreglo de barba",
+                            Precio = 3500m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descripcion = "Afeitado con toalla caliente y navaja.",
+                            Nombre = "Afeitado clásico",
+                            Precio = 4500m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Descripcion = "Coloración tradicional para cabello.",
+                            Nombre = "Tintura para cabello",
+                            Precio = 9000m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Descripcion = "Coloración y perfilado de barba.",
+                            Nombre = "Tintura para barba",
+                            Precio = 6000m
                         });
                 });
 
@@ -263,6 +399,38 @@ namespace Barberia.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Contrasena = "HASH_JUAN",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EsAdmin = false,
+                            EstaBloqueado = false,
+                            EstaEliminado = false,
+                            NombreUsuario = "juan"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Contrasena = "HASH_MARIO",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EsAdmin = false,
+                            EstaBloqueado = false,
+                            EstaEliminado = false,
+                            NombreUsuario = "mario"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Contrasena = "HASH_LUIS",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EsAdmin = false,
+                            EstaBloqueado = false,
+                            EstaEliminado = false,
+                            NombreUsuario = "luis"
+                        });
                 });
 
             modelBuilder.Entity("Barberia.Models.Domain.BarberoServicio", b =>

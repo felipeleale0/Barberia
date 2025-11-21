@@ -1,189 +1,87 @@
-﻿@* @using Barberia.Models.Domain
-@model IEnumerable<Turno>
+﻿@model Barberia.Models.ViewModels.TurnoDisponibleViewModel
 
 @{
-    ViewData["Title"] = "Turnos del Día";
+    ViewData["Title"] = "Turnos";
 }
 
-<div class="contenedor">
-    <h1 class="titulo"><i class="fa-solid fa-calendar-day"></i> Turnos del Día</h1>
+<div class="container mt-4">
+    <h2>Reservar turno</h2>
+    <p>Elegí la fecha del turno y reservá uno de los horarios disponibles.</p>
 
-    @if (TempData["Mensaje"] != null)
-    {
-        <div class="alerta exito">
-            @TempData["Mensaje"]
-        </div>
-    }
+    <form asp-action="Index" method="get" class="d-flex align-items-center mb-4 gap-2">
+        <label class="me-2">Fecha:</label>
+        <input type="date" name="fecha"
+               value="@Model.FechaSeleccionada.ToString("yyyy-MM-dd")"
+               class="form-control" style="max-width: 220px;" />
+        <button type="submit" class="btn btn-primary">Ver turnos</button>
+    </form>
 
     @if (TempData["Error"] != null)
     {
-        <div class="alerta error">
-            @TempData["Error"]
-        </div>
+        <div class="alert alert-danger">@TempData["Error"]</div>
     }
-
-    <div class="acciones">
-        <a asp-action="Crear" class="boton agregar">
-            <i class="fa-solid fa-plus"></i> Agregar Turno
-        </a>
-    </div>
-
-    <table class="tabla">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Cliente</th>
-                <th>Barbero</th>
-                <th>Servicio</th>
-                <th>Fecha</th>
-                <th>Precio</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null && Model.Any())
-            {
-                int i = 1;
-                foreach (var turno in Model)
-                {
-                    <tr>
-                        <td>@i</td>
-                        <td>@turno.Cliente</td>
-                        <td>@turno.Barbero?.Nombre</td>
-                        <td>@turno.Servicio?.Nombre</td>
-                        <td>@turno.FechaHora.ToString("dd/MM/yyyy HH:mm")</td>
-                        <td>$@turno.Precio</td>
-                        <td>
-                            <a asp-action="Editar" asp-route-id="@turno.Id" class="boton editar">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a asp-action="Eliminar" asp-route-id="@turno.Id" class="boton eliminar" onclick="return confirm('¿Seguro que querés eliminar este turno?');">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    i++;
-                }
-            }
-            else
-            {
-                <tr>
-                    <td colspan="7">No hay turnos registrados.</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
-
-<style>
-    body {
-        background-color: #111;
-        color: #f8f8f8;
-        font-family: 'Poppins', sans-serif;
-        text-align: center;
-    }
-
-    .contenedor {
-        margin: 40px auto;
-        width: 90%;
-        max-width: 1000px;
-        background-color: #1b1b1b;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-    }
-
-    .titulo {
-        color: #ffd700;
-        margin-bottom: 25px;
-    }
-
-    .acciones {
-        text-align: left;
-        margin-bottom: 15px;
-    }
-
-    .tabla {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-    }
-
-        .tabla th, .tabla td {
-            padding: 12px;
-            border-bottom: 1px solid #333;
-        }
-
-        .tabla th {
-            color: #ffd700;
-            text-transform: uppercase;
-        }
-
-    .boton {
-        padding: 6px 12px;
-        border-radius: 6px;
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .agregar {
-        background-color: #ffd700;
-    }
-
-    .editar {
-        background-color: #00c851;
-        color: white;
-        margin-right: 5px;
-    }
-
-    .eliminar {
-        background-color: #ff4444;
-        color: white;
-    }
-
-    .editar:hover {
-        background-color: #33d475;
-    }
-
-    .eliminar:hover {
-        background-color: #ff6666;
-    }
-
-    .alerta {
-        margin: 10px auto;
-        padding: 12px;
-        border-radius: 10px;
-        width: 80%;
-        font-weight: bold;
-        animation: aparecer 0.6s ease;
-    }
-
-        .alerta.exito {
-            background-color: #2bff6a1a;
-            color: #2bff6a;
-            border: 1px solid #2bff6a;
-        }
-
-        .alerta.error {
-            background-color: #ff44441a;
-            color: #ff4444;
-            border: 1px solid #ff4444;
-        }
-
-    @@keyframes aparecer {
-        from
-
+    @if (TempData["Ok"] != null)
     {
-        opacity: 0;
-        transform: translateY(-10px);
+        <div class="alert alert-success">@TempData["Ok"]</div>
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    @if (!Model.Turnos.Any())
+    {
+        <p>No hay turnos configurados para esta fecha.</p>
     }
-
+    else
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Barbero</th>
+                    <th>Servicio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model.Turnos)
+                {
+                    <tr class="@(t.EstaDisponible ? "" : "table-secondary")">
+                        <td>@t.Hora</td>
+                        <td>@t.EmpleadoNombre</td>
+                        <td>
+                            @if (t.Servicios.Any())
+                            {
+                                <form asp-action="Reservar" method="post" class="d-flex gap-2">
+                                    <input type="hidden" name="turnoId" value="@t.TurnoId" />
+                                    <select name="servicioId" class="form-select">
+                                        @foreach (var s in t.Servicios)
+                                        {
+                                            <option value="@s.Id">
+                                                @s.Nombre (@s.Precio.ToString("C"))
+                                            </option>
+                                        }
+                                    </select>
+                                    @if (t.EstaDisponible)
+                                    {
+                                        <button type="submit" class="btn btn-success">
+                                            Reservar
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-secondary" disabled>
+                                            Ocupado
+                                        </button>
+                                    }
+                                </form>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Sin servicios asignados</span>
+                            }
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     }
-</style> *@
+</div>

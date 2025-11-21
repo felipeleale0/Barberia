@@ -22,6 +22,30 @@ namespace Barberia.Data.Configurations
 
             // (Opcional pero muy útil) filtro global de soft delete
             builder.HasQueryFilter(u => !u.EstaEliminado);
+
+            builder.HasData(
+                new Usuario
+                {
+                    Id = 2,
+                    NombreUsuario = "juan",
+                    Contrasena = "HASH_JUAN",
+                    CreatedAt = new DateTime(2025, 01, 01)
+                },
+                new Usuario
+                {
+                    Id = 3,
+                    NombreUsuario = "mario",
+                    Contrasena = "HASH_MARIO",
+                    CreatedAt = new DateTime(2025, 01, 01)
+                },
+                new Usuario
+                {
+                    Id = 4,
+                    NombreUsuario = "luis",
+                    Contrasena = "HASH_LUIS",
+                    CreatedAt = new DateTime(2025, 01, 01)
+                }
+            );
         }
     }
 }

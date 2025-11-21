@@ -11,7 +11,9 @@ namespace Barberia.Data.Configurations
             builder.HasData(
                 new Estado { Id = 1, Descripcion = "Pendiente" },
                 new Estado { Id = 2, Descripcion = "Confirmado" },
-                new Estado { Id = 3, Descripcion = "Cancelado" }
+                new Estado { Id = 3, Descripcion = "Cancelado" },
+                new Estado { Id = 4, Descripcion = "Reservado" }
+
             );
         }
     }

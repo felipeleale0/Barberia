@@ -191,13 +191,68 @@ namespace Barberia.Migrations
                 {
                     { 1, "Pendiente" },
                     { 2, "Confirmado" },
-                    { 3, "Cancelado" }
+                    { 3, "Cancelado" },
+                    { 4, "Reservado" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Servicios",
                 columns: new[] { "Id", "Descripcion", "Nombre", "Precio" },
-                values: new object[] { 1, "Corte de cabello estándar.", "Corte clásico", 2500m });
+                values: new object[,]
+                {
+                    { 1, "Corte tradicional con tijera y máquina.", "Corte clásico", 5000m },
+                    { 2, "Fade bajo, medio o alto, con terminaciones a navaja.", "Corte degradado (Fade)", 6500m },
+                    { 3, "Perfilado, rebaje y prolijo general.", "Arreglo de barba", 3500m },
+                    { 4, "Afeitado con toalla caliente y navaja.", "Afeitado clásico", 4500m },
+                    { 5, "Coloración tradicional para cabello.", "Tintura para cabello", 9000m },
+                    { 6, "Coloración y perfilado de barba.", "Tintura para barba", 6000m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "Id", "Contrasena", "CreatedAt", "EsAdmin", "NombreUsuario" },
+                values: new object[,]
+                {
+                    { 2, "HASH_JUAN", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "juan" },
+                    { 3, "HASH_MARIO", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "mario" },
+                    { 4, "HASH_LUIS", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "luis" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Personas",
+                columns: new[] { "Id", "Apellido", "CorreoElectronico", "EsBarbero", "Nombre", "UsuarioId" },
+                values: new object[,]
+                {
+                    { 1, "Gómez", "juan@barberia.local", true, "Juan", 2 },
+                    { 2, "Pérez", "mario@barberia.local", true, "Mario", 3 },
+                    { 3, "Rodríguez", "luis@barberia.local", true, "Luis", 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Empleados",
+                columns: new[] { "Id", "PersonaId" },
+                values: new object[,]
+                {
+                    { 2, 1 },
+                    { 3, 2 },
+                    { 4, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "BarberoServicios",
+                columns: new[] { "EmpleadoId", "ServicioId" },
+                values: new object[,]
+                {
+                    { 2, 1 },
+                    { 2, 2 },
+                    { 2, 3 },
+                    { 3, 1 },
+                    { 3, 3 },
+                    { 3, 4 },
+                    { 4, 1 },
+                    { 4, 5 },
+                    { 4, 6 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BarberoServicios_ServicioId",
