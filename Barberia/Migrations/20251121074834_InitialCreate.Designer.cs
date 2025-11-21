@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Barberia.Migrations
 {
     [DbContext(typeof(BarberiaContext))]
-    [Migration("20251113032625_BuilderSeed")]
-    partial class BuilderSeed
+    [Migration("20251121074834_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,6 +108,11 @@ namespace Barberia.Migrations
                     b.Property<string>("CorreoElectronico")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<bool>("EsBarbero")
                         .HasColumnType("bit");
 
@@ -124,17 +129,6 @@ namespace Barberia.Migrations
                         .IsUnique();
 
                     b.ToTable("Personas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Apellido = "User",
-                            CorreoElectronico = "test@barberia.local",
-                            EsBarbero = false,
-                            Nombre = "Test",
-                            UsuarioId = 1
-                        });
                 });
 
             modelBuilder.Entity("Barberia.Models.Domain.Reserva", b =>
@@ -244,8 +238,23 @@ namespace Barberia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
                     b.Property<bool>("EsAdmin")
                         .HasColumnType("bit");
+
+                    b.Property<bool>("EstaBloqueado")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("EstaEliminado")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("NombreUsuario")
                         .IsRequired()
@@ -291,7 +300,7 @@ namespace Barberia.Migrations
                     b.HasOne("Barberia.Models.Domain.Usuario", "Usuario")
                         .WithOne("Persona")
                         .HasForeignKey("Barberia.Models.Domain.Persona", "UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Usuario");

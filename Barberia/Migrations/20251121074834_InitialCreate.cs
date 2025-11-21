@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Barberia.Migrations
 {
     /// <inheritdoc />
-    public partial class Initials : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,7 +49,10 @@ namespace Barberia.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EsAdmin = table.Column<bool>(type: "bit", nullable: false)
+                    EsAdmin = table.Column<bool>(type: "bit", nullable: false),
+                    EstaBloqueado = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    EstaEliminado = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {
@@ -64,6 +69,7 @@ namespace Barberia.Migrations
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EsBarbero = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     UsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -73,8 +79,7 @@ namespace Barberia.Migrations
                         name: "FK_Personas_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -178,6 +183,21 @@ namespace Barberia.Migrations
                         principalTable: "Usuarios",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Estados",
+                columns: new[] { "Id", "Descripcion" },
+                values: new object[,]
+                {
+                    { 1, "Pendiente" },
+                    { 2, "Confirmado" },
+                    { 3, "Cancelado" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Servicios",
+                columns: new[] { "Id", "Descripcion", "Nombre", "Precio" },
+                values: new object[] { 1, "Corte de cabello estándar.", "Corte clásico", 2500m });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BarberoServicios_ServicioId",
