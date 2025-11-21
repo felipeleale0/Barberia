@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Barberia.Migrations
 {
     [DbContext(typeof(BarberiaContext))]
-    [Migration("20251121090912_InitialCreate")]
+    [Migration("20251121092415_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

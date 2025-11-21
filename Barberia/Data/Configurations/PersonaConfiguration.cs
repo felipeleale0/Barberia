@@ -16,6 +16,9 @@ namespace Barberia.Data.Configurations
             builder.Property(p => p.CreatedAt)
                    .HasColumnType("datetime2")
                    .HasDefaultValueSql("GETDATE()");
+
+            builder.HasQueryFilter(p => !p.Usuario.EstaEliminado);
+
             builder.HasData(
                 new Persona { Id = 1, Nombre = "Juan", Apellido = "Gómez", CorreoElectronico = "juan@barberia.local", EsBarbero = true, UsuarioId = 2 },
                 new Persona { Id = 2, Nombre = "Mario", Apellido = "Pérez", CorreoElectronico = "mario@barberia.local", EsBarbero = true, UsuarioId = 3 },
