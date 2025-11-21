@@ -144,4 +144,8 @@ $RECYCLE.BIN/
 .env.production
 
 # Connection strings (si tienes archivos específicos con cadenas de conexión)
-*/appsetting.Local.json
+appsettings*.Local.json
+appsettings*.Secrets.json
+appsettings*.Development.json
+*.secret.json
+
