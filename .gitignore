@@ -149,3 +149,4 @@ appsettings*.Secrets.json
 appsettings*.Development.json
 *.secret.json
 
+/Barberia/appsettings.Local.json
