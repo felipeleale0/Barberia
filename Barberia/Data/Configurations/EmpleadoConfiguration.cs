@@ -15,6 +15,12 @@ namespace Barberia.Data.Configurations
             builder.HasMany(e => e.Turnos)
                 .WithOne(t => t.Empleado)
                 .HasForeignKey(t => t.EmpleadoId);
+
+            builder.HasData(
+                new Empleado { Id = 2, PersonaId = 1 },
+                new Empleado { Id = 3, PersonaId = 2 },
+                new Empleado { Id = 4, PersonaId = 3 }
+            );
         }
     }
 }

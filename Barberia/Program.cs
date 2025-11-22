@@ -1,5 +1,8 @@
 using Barberia.Data;
+using Barberia.Data.Seed;
+using Barberia.Interfaces;
 using Barberia.Models.Domain;
+using Barberia.Services.Email;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -41,44 +44,16 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("EsAdmin", "True"));
 });
 
+
+builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection("SendGrid"));
+builder.Services.AddTransient<IAppEmailSender, SendGridEmailSender>();
+
+builder.Services.AddSingleton<EmailTemplateLoader>();
+
+
 var app = builder.Build();
 
-// SEED inicial (usuario test + persona)
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<BarberiaContext>();
-    context.Database.Migrate();
-
-    if (!context.Usuarios.Any(u => u.NombreUsuario == "test"))
-    {
-        var hasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher<Usuario>>();
-
-        var usuario = new Usuario
-        {
-            NombreUsuario = "test",
-            EsAdmin = true,
-            CreatedAt = DateTime.UtcNow
-        };
-
-        usuario.Contrasena = hasher.HashPassword(usuario, "123456");
-
-        context.Usuarios.Add(usuario);
-        context.SaveChanges();
-
-        var persona = new Persona
-        {
-            Nombre = "Test",
-            Apellido = "User",
-            CorreoElectronico = "test@barberia.local",
-            EsBarbero = false,
-            UsuarioId = usuario.Id,
-            CreatedAt = DateTime.UtcNow
-        };
-
-        context.Personas.Add(persona);
-        context.SaveChanges();
-    }
-}
+await InitialDataSeeder.SeedAsync(app.Services);
 
 // PIPELINE HTTP
 if (!app.Environment.IsDevelopment())

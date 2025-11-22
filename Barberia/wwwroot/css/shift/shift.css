@@ -1,0 +1,233 @@
+﻿/* Tabla compacta bonita */
+.users-table-wrapper {
+    margin-top: 0.5rem;
+    overflow-x: auto;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.users-table thead tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.users-table th,
+.users-table td {
+    padding: 0.7rem 0.75rem;
+    text-align: left;
+}
+
+.users-table th {
+    font-weight: 500;
+    color: #6b7280;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.users-table tbody tr:nth-child(odd) {
+    background: #f9fafb;
+}
+
+.users-table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+.users-table tbody tr:hover {
+    background: #eef2ff;
+}
+
+
+/* Tabla compacta bonita */
+.users-table-wrapper {
+    margin-top: 0.5rem;
+    overflow-x: auto;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+    .users-table thead tr {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 0.7rem 0.75rem;
+        text-align: left;
+    }
+
+    .users-table th {
+        font-weight: 500;
+        color: #6b7280;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .users-table tbody tr:nth-child(odd) {
+        background: #f9fafb;
+    }
+
+    .users-table tbody tr:nth-child(even) {
+        background: #ffffff;
+    }
+
+    .users-table tbody tr:hover {
+        background: #eef2ff;
+    }
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.pill-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.pill-danger {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.btn-action {
+    border-radius: 999px;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.8rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary-soft {
+    border-color: #0ea5e9;
+    background: #0ea5e9;
+    color: #0f172a;
+}
+
+    .btn-primary-soft:hover {
+        background: #0284c7;
+        border-color: #0284c7;
+        color: #f9fafb;
+    }
+
+
+.select-filter {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #e4e6f1;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7L10 12L15 7' stroke='%2394A3B8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 14px;
+    padding-right: 2.4rem;
+}
+
+
+.btn-reservar-turno {
+    border-radius: 999px;
+    border: none;
+    padding: 0.25rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: #22c55e;
+    color: #064e3b;
+    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+}
+
+    .btn-reservar-turno:hover {
+        filter: brightness(1.05);
+        box-shadow: 0 6px 14px rgba(34, 197, 94, 0.4);
+        transform: translateY(-1px);
+    }
+
+    .btn-reservar-turno:active {
+        transform: translateY(1px);
+        box-shadow: 0 3px 8px rgba(34, 197, 94, 0.3);
+    }
+
+
+/* Distribución de columnas en Turnos */
+.users-table th.col-hora,
+.users-table td.col-hora {
+    width: 10%;
+}
+
+.users-table th.col-barbero,
+.users-table td.col-barbero {
+    width: 25%;
+}
+
+.users-table th.col-servicio,
+.users-table td.col-servicio {
+    width: 45%;
+}
+
+.users-table th.col-estado,
+.users-table td.col-estado {
+    width: 20%;
+}
+
+/* Filtro de fecha en el header */
+.date-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.date-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.date-input {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #e4e6f1;
+    background: #f7f8fc;
+    font-size: 0.9rem;
+    color: #111827;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+    .date-input:focus {
+        background: #ffffff;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+    }
+
+    .date-input::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+        .date-input::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+        }
+
+/* Select deshabilitado cuando el turno está ocupado */
+.select-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    background: #f3f4f6 !important;
+    color: #6b7280 !important;
+    border-color: #e5e7eb !important;
+}

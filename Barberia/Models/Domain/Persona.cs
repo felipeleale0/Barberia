@@ -19,8 +19,8 @@ namespace Barberia.Models.Domain
         public DateTime CreatedAt { get; set; }  
 
         [Required]
-        public int UsuarioId { get; set; }
-        public Usuario Usuario { get; set; } = null!;
+        public int? UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; } = null!;
 
         // Si la persona es barbero, tendrá un Empleado asociado
         public Empleado? Empleado { get; set; }
