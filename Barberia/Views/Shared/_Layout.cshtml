@@ -89,8 +89,10 @@
                         {
                             <li><a asp-controller="Usuarios" asp-action="Index">Usuarios</a></li>
                         }
-
-                        <li><a asp-controller="Servicio" asp-action="Index">Servicios</a></li>
+                         @if (esAdmin)
+                        {
+                           <li><a asp-controller="Servicio" asp-action="Index">Servicios</a></li>
+                        }
                         <li><a asp-controller="Contacto" asp-action="Index">Contacto</a></li>
                     </ul>
                 </nav>

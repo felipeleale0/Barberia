@@ -9,7 +9,7 @@ namespace Barberia.Models.Domain
         public int Id { get; set; }
 
         [Required]
-        public string Nombre { get; set; } = null!;
+        public string Nombre { get; set; } = null!; // Verificar
 
         [Required]
         [Column(TypeName = "decimal(10,2)")]
@@ -18,9 +18,9 @@ namespace Barberia.Models.Domain
         public string? Descripcion { get; set; }
 
         // Barberos que ofrecen este servicio
-        public List<BarberoServicio> BarberoServicios { get; set; } = new();
+        public List<BarberoServicio> BarberoServicios { get; set; } = new(); // Averiguar porque esta esto aca
 
         // Reservas que eligieron este servicio
-        public List<Reserva> Reservas { get; set; } = new();
+        public List<Reserva> Reservas { get; set; } = new(); // Averiguar porque esta esto aca
     }
 }
