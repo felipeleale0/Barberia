@@ -143,3 +143,7 @@ $RECYCLE.BIN/
 
 # Connection strings (si tienes archivos específicos con cadenas de conexión)
 *ConnectionStrings.json
+
+.vs/
+Barberia/obj/
+Barberia/bin/
