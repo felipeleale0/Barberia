@@ -85,13 +85,29 @@
                         <li><a asp-controller="Home" asp-action="Index">Inicio</a></li>
                         <li><a asp-controller="Turnos" asp-action="Index">Turnos</a></li>
 
+
                         @if (esAdmin)
                         {
                             <li><a asp-controller="Usuarios" asp-action="Index">Usuarios</a></li>
+                            <li><a asp-controller="Reservas" asp-action="Index">Reservas</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-controller="Reservas" asp-action="Mis">Mis reservas</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                   asp-controller="Turnos"
+                                   asp-action="Disponibles">
+                                    Reservar turno
+                                </a>
+                            </li>
                         }
 
                         <li><a asp-controller="Servicio" asp-action="Index">Servicios</a></li>
                         <li><a asp-controller="Contacto" asp-action="Index">Contacto</a></li>
+                    
+
+
                     </ul>
                 </nav>
             </aside>

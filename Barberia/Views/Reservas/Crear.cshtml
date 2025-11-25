@@ -1,0 +1,37 @@
+﻿@model Barberia.Models.ViewModels.ReservaCreateViewModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Confirmar reserva";
+}
+
+<h2>Confirmar reserva</h2>
+
+<div>
+    <p>
+        <strong>Fecha:</strong> @Model.Turno.Fecha.ToString("dd/MM/yyyy") <br />
+        <strong>Hora:</strong> @Model.Turno.Hora <br />
+        <strong>Barbero:</strong> @Model.Turno.Empleado?.Persona?.Nombre @Model.Turno.Empleado?.Persona?.Apellido
+    </p>
+</div>
+
+<form asp-action="Crear" method="post">
+    <input type="hidden" asp-for="TurnoId" />
+
+    <div class="form-group">
+        <label asp-for="ServicioId"></label>
+        <select asp-for="ServicioId"
+                class="form-control"
+                asp-items="@(new SelectList(Model.ServiciosDisponibles, "Id", "Nombre"))">
+            <option value="">-- Seleccionar servicio --</option>
+        </select>
+        <span asp-validation-for="ServicioId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Confirmar reserva</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

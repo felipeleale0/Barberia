@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Barberia.Models.Domain.Reserva>
+
+<h2>Reservas (todas)</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Barbero</th>
+            <th>Servicio</th>
+            <th>Estado</th>
+            <th>Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Usuario.Persona?.Nombre @r.Usuario.Persona?.Apellido</td>
+                <td>@r.Turno.Fecha.ToShortDateString()</td>
+                <td>@r.Turno.Hora</td>
+                <td>@r.Turno.Empleado.Persona.Nombre @r.Turno.Empleado.Persona.Apellido</td>
+                <td>@r.Servicio.Nombre</td>
+                <td>@r.Estado.Descripcion</td>
+                <td>@r.CostoTotal.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

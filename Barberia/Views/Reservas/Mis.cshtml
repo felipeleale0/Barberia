@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Barberia.Models.Domain.Reserva>
+
+<h2>@ViewBag.Titulo</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Barbero</th>
+            <th>Servicio</th>
+            <th>Estado</th>
+            <th>Costo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Turno!.Fecha.ToShortDateString()</td>
+                <td>@r.Turno!.Hora</td>
+                <td>@r.Turno!.Empleado.Persona.Nombre @r.Turno.Empleado.Persona.Apellido</td>
+                <td>@r.Servicio.Descripcion</td>
+                <td>@r.Estado.Descripcion</td>
+                <td>@r.CostoTotal</td>
+                <td>
+                    @if (User.IsInRole("Admin") || r.UsuarioId.ToString() == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value)
+                    {
+                        <form asp-action="Cancelar" method="post">
+                            <input type="hidden" name="id" value="@r.Id" />
+                            <button type="submit" class="btn btn-sm btn-danger">Cancelar</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

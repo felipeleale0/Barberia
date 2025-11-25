@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Barberia.Models.Domain.Turno>
+
+@{
+    var servicios = ViewBag.Servicios as List<Barberia.Models.Domain.Servicio>;
+    string fechaSeleccionada = ViewBag.FechaSeleccionada as string ?? "";
+}
+
+<h2>Turnos disponibles</h2>
+
+<form asp-action="Disponibles" method="get" class="row g-3 mb-3">
+    <div class="col-auto">
+        <label class="form-label">Fecha</label>
+        <input type="date" name="fecha" value="@fechaSeleccionada" class="form-control" />
+    </div>
+    <div class="col-auto align-self-end">
+        <button type="submit" class="btn btn-secondary">Filtrar</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Barbero</th>
+            <th>Servicio</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.Fecha.ToShortDateString()</td>
+                <td>@t.Hora</td>
+                <td>@t.Empleado.Persona.Nombre @t.Empleado.Persona.Apellido</td>
+                <td>
+                    <form asp-controller="Reservas"
+                          asp-action="Crear"
+                          method="post" class="d-flex">
+                        <input type="hidden" name="turnoId" value="@t.Id" />
+
+                        <select name="servicioId" class="form-select me-2">
+                            @foreach (var s in servicios)
+                            {
+                                <option value="@s.Id">@s.Nombre</option>
+                            }
+                        </select>
+
+                        <button type="submit" class="btn btn-primary">
+                            Reservar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

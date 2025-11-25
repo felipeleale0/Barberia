@@ -22,3 +22,5 @@ namespace Barberia.Models.Domain
         public List<Reserva> Reservas { get; set; } = new();
     }
 }
+
+
