@@ -30,6 +30,9 @@ namespace Barberia.Data.Configurations
                 .WithMany(s => s.Reservas)
                 .HasForeignKey(r => r.ServicioId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasQueryFilter(r => !r.Usuario.EstaEliminado);
+
         }
     }
 }

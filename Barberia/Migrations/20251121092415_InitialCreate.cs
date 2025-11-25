@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Barberia.Migrations
 {
     /// <inheritdoc />
-    public partial class Initials : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,7 +49,12 @@ namespace Barberia.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EsAdmin = table.Column<bool>(type: "bit", nullable: false)
+                    EsAdmin = table.Column<bool>(type: "bit", nullable: false),
+                    EstaBloqueado = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    EstaEliminado = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    PasswordResetToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PasswordResetTokenExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,6 +71,7 @@ namespace Barberia.Migrations
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CorreoElectronico = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EsBarbero = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     UsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -73,8 +81,7 @@ namespace Barberia.Migrations
                         name: "FK_Personas_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -177,6 +184,76 @@ namespace Barberia.Migrations
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Estados",
+                columns: new[] { "Id", "Descripcion" },
+                values: new object[,]
+                {
+                    { 1, "Pendiente" },
+                    { 2, "Confirmado" },
+                    { 3, "Cancelado" },
+                    { 4, "Reservado" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Servicios",
+                columns: new[] { "Id", "Descripcion", "Nombre", "Precio" },
+                values: new object[,]
+                {
+                    { 1, "Corte tradicional con tijera y máquina.", "Corte clásico", 5000m },
+                    { 2, "Fade bajo, medio o alto, con terminaciones a navaja.", "Corte degradado (Fade)", 6500m },
+                    { 3, "Perfilado, rebaje y prolijo general.", "Arreglo de barba", 3500m },
+                    { 4, "Afeitado con toalla caliente y navaja.", "Afeitado clásico", 4500m },
+                    { 5, "Coloración tradicional para cabello.", "Tintura para cabello", 9000m },
+                    { 6, "Coloración y perfilado de barba.", "Tintura para barba", 6000m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "Id", "Contrasena", "CreatedAt", "EsAdmin", "NombreUsuario", "PasswordResetToken", "PasswordResetTokenExpiresAt" },
+                values: new object[,]
+                {
+                    { 2, "HASH_JUAN", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "juan", null, null },
+                    { 3, "HASH_MARIO", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "mario", null, null },
+                    { 4, "HASH_LUIS", new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "luis", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Personas",
+                columns: new[] { "Id", "Apellido", "CorreoElectronico", "EsBarbero", "Nombre", "UsuarioId" },
+                values: new object[,]
+                {
+                    { 1, "Gómez", "juan@barberia.local", true, "Juan", 2 },
+                    { 2, "Pérez", "mario@barberia.local", true, "Mario", 3 },
+                    { 3, "Rodríguez", "luis@barberia.local", true, "Luis", 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Empleados",
+                columns: new[] { "Id", "PersonaId" },
+                values: new object[,]
+                {
+                    { 2, 1 },
+                    { 3, 2 },
+                    { 4, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "BarberoServicios",
+                columns: new[] { "EmpleadoId", "ServicioId" },
+                values: new object[,]
+                {
+                    { 2, 1 },
+                    { 2, 2 },
+                    { 2, 3 },
+                    { 3, 1 },
+                    { 3, 3 },
+                    { 3, 4 },
+                    { 4, 1 },
+                    { 4, 5 },
+                    { 4, 6 }
                 });
 
             migrationBuilder.CreateIndex(

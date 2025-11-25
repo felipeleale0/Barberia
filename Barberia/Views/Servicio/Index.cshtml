@@ -1,170 +1,154 @@
-﻿@using Barberia.Models.Domain
-@model IEnumerable<Servicio>
+﻿@model List<Barberia.Models.Domain.Servicio>
 
-@{
-    ViewData["Title"] = "Servicios";
+<h2 class="titulo" style="margin-bottom:20px;">Servicios</h2>
+
+<!-- ALERTAS -->
+@if (TempData["OK"] != null)
+{
+    <div class="alert alert-success" style="margin-bottom:15px;">@TempData["OK"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" style="margin-bottom:15px;">@TempData["Error"]</div>
 }
 
-<div class="contenedor">
-    <h1 class="titulo"><i class="fa-solid fa-scissors"></i> Servicios Disponibles</h1>
+<!-- FORM CREAR -->
+<div style="
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom:25px;">
 
-    @if (TempData["Mensaje"] != null)
-    {
-        <div class="alerta exito">@TempData["Mensaje"]</div>
-    }
+    <form asp-action="Crear" method="post" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
 
-    @if (TempData["Error"] != null)
-    {
-        <div class="alerta error">@TempData["Error"]</div>
-    }
+        <input type="text" name="nombre" placeholder="Nombre del servicio" required
+               style="padding:8px 12px; border:1px solid #ccc; border-radius:6px; width:220px;" />
 
-    <div class="acciones">
-        <a asp-action="Crear" class="boton agregar"><i class="fa-solid fa-plus"></i> Agregar Servicio</a>
-    </div>
+        <input type="number" step="0.01" name="precio" placeholder="Precio" required
+               style="padding:8px 12px; border:1px solid #ccc; border-radius:6px; width:140px;" />
 
-    <table class="tabla">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model.Any())
-            {
-                int i = 1;
-                foreach (var s in Model)
-                {
-                    <tr>
-                        <td>@i</td>
-                        <td>@s.Nombre</td>
-                        <td>$@s.Precio</td>
-                        <td>@s.Descripcion</td>
-                        <td>
-                            <a asp-action="Editar" asp-route-id="@s.Id" class="boton editar"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a asp-action="Eliminar" asp-route-id="@s.Id" class="boton eliminar" onclick="return confirm('¿Eliminar este servicio?');">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    i++;
-                }
-            }
-            else
-            {
-                <tr><td colspan="5">No hay servicios registrados.</td></tr>
-            }
-        </tbody>
-    </table>
+        <input type="text" name="descripcion" placeholder="Descripción (opcional)"
+               style="padding:8px 12px; border:1px solid #ccc; border-radius:6px; width:260px;" />
+
+        <button type="submit" class="btn btn-primary"
+                style="padding:8px 16px; border-radius:6px;">
+            ➕ Agregar
+        </button>
+    </form>
 </div>
 
-<style>
-    /* Igual que tus vistas anteriores: negro/dorado */
-    body {
-        background-color: #111;
-        color: #f8f8f8;
-        font-family: 'Poppins', sans-serif;
-        text-align: center;
-    }
+<!-- TABLA DE SERVICIOS -->
+<table class="table" style="
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);">
 
-    .contenedor {
-        margin: 40px auto;
-        width: 90%;
-        max-width: 900px;
-        background-color: #1b1b1b;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 0 20px rgba(255,215,0,0.2);
-    }
+    <thead class="table-light">
+        <tr>
+            <th style="padding:14px;">Servicio</th>
+            <th style="padding:14px;">Precio</th>
+            <th style="padding:14px;">Descripción</th>
+            <th style="padding:14px; width:160px;">Acciones</th>
+        </tr>
+    </thead>
 
-    .titulo {
-        color: #ffd700;
-        margin-bottom: 25px;
-    }
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr style="transition:0.2s;">
+                <td style="padding:14px;">@s.Nombre</td>
+                <td style="padding:14px;">$ @s.Precio</td>
+                <td style="padding:14px;">@s.Descripcion</td>
 
-    .tabla {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-    }
+                <td style="padding:14px; display:flex; gap:12px;">
 
-        .tabla th, .tabla td {
-            padding: 12px;
-            border-bottom: 1px solid #333;
+                    <!-- ELIMINAR (botón grande y rojo) -->
+                    <form asp-action="Eliminar" asp-route-id="@s.Id" method="post">
+                        <button type="submit"
+                                style="
+                            background:#dc3545;
+                            color:white;
+                            border:none;
+                            padding:10px 16px;
+                            border-radius:8px;
+                            font-weight:600;
+                            cursor:pointer;">
+                            🗑 Eliminar
+                        </button>
+                    </form>
+
+                    <!-- EDITAR (abre formulario inline) -->
+                    <button type="button"
+                            onclick="abrirEdicion(@s.Id)"
+                            style="
+                        background:#0d6efd;
+                        color:white;
+                        border:none;
+                        padding:10px 16px;
+                        border-radius:8px;
+                        font-weight:600;
+                        cursor:pointer;">
+                        ✏️ Editar
+                    </button>
+                </td>
+            </tr>
+
+            <!-- FILA DE EDICIÓN OCULTA -->
+            <tr id="editRow-@s.Id" style="display:none; background:#f9f9f9;">
+                <td colspan="4" style="padding:16px;">
+
+                    <form asp-action="Editar" method="post" style="display:flex; gap:12px; flex-wrap:wrap;">
+
+                        <input type="hidden" name="id" value="@s.Id" />
+
+                        <input type="text" name="nombre" value="@s.Nombre"
+                               style="padding:8px 10px; border:1px solid #ccc; border-radius:6px; width:200px;" />
+
+                        <input type="number" step="0.01" name="precio" value="@s.Precio"
+                               style="padding:8px 10px; border:1px solid #ccc; border-radius:6px; width:140px;" />
+
+                        <input type="text" name="descripcion" value="@s.Descripcion"
+                               style="padding:8px 10px; border:1px solid #ccc; border-radius:6px; width:240px;" />
+
+                        <button type="submit"
+                                style="
+                            background:#28a745;
+                            color:white;
+                            border:none;
+                            padding:10px 16px;
+                            border-radius:8px;
+                            font-weight:600;
+                            cursor:pointer;">
+                            ✔ Guardar cambios
+                        </button>
+
+                        <button type="button"
+                                onclick="cerrarEdicion(@s.Id)"
+                                style="
+                            background:#6c757d;
+                            color:white;
+                            border:none;
+                            padding:10px 16px;
+                            border-radius:8px;
+                            font-weight:600;
+                            cursor:pointer;">
+                            ✖ Cancelar
+                        </button>
+
+                    </form>
+                </td>
+            </tr>
         }
-
-        .tabla th {
-            color: #ffd700;
-            text-transform: uppercase;
-        }
-
-    .boton {
-        padding: 6px 12px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: bold;
-        color: black;
-        transition: 0.3s;
+    </tbody>
+</table>
+<script>
+    function abrirEdicion(id) {
+        document.getElementById("editRow-" + id).style.display = "table-row";
     }
 
-    .agregar {
-        background-color: #ffd700;
+    function cerrarEdicion(id) {
+        document.getElementById("editRow-" + id).style.display = "none";
     }
-
-    .editar {
-        background-color: #00c851;
-        color: white;
-        margin-right: 5px;
-    }
-
-    .eliminar {
-        background-color: #ff4444;
-        color: white;
-    }
-
-    .editar:hover {
-        background-color: #33d475;
-    }
-
-    .eliminar:hover {
-        background-color: #ff6666;
-    }
-
-    .alerta {
-        margin: 10px auto;
-        padding: 12px;
-        border-radius: 10px;
-        width: 80%;
-        font-weight: bold;
-        animation: aparecer 0.6s ease;
-    }
-
-        .alerta.exito {
-            background-color: #2bff6a1a;
-            color: #2bff6a;
-            border: 1px solid #2bff6a;
-        }
-
-        .alerta.error {
-            background-color: #ff44441a;
-            color: #ff4444;
-            border: 1px solid #ff4444;
-        }
-    @@keyframes aparecer {
-        from
-
-    {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    }
-</style>
+</script>
