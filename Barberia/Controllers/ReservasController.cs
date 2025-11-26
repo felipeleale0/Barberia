@@ -54,6 +54,11 @@ namespace Barberia.Controllers
                 listaDeUsuarios = listaDeUsuarios
                     .Where(r => r.UsuarioId == currentUserId);
             }
+            listaDeUsuarios = listaDeUsuarios
+                .OrderByDescending(r => r.EstadoId)
+                .ThenBy(r => r.Turno.Fecha)
+                .ThenBy(r => r.Turno.Hora);
+                
 
             return View(await listaDeUsuarios.ToListAsync());
         }
@@ -94,12 +99,13 @@ namespace Barberia.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reagendar(int id)
         {
-            // id = Id de la reserva que quiero mover a otro turno
+
+            await Task.CompletedTask;
 
             return RedirectToAction(
                 actionName: "Index",
                 controllerName: "Turnos",
-                routeValues: new { reservaId = id } // pasamos el id
+                routeValues: new { reservaId = id }
             );
 
         }
