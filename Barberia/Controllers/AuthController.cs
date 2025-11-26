@@ -104,10 +104,56 @@ namespace Barberia.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
-            // etc...
-            return View();
+            return View(new UsuarioAdminCreateViewModel());
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register(UsuarioAdminCreateViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            if (model.Password != model.ConfirmPassword)
+            {
+                ModelState.AddModelError(nameof(model.ConfirmPassword), "Las contraseñas no coinciden.");
+                return View(model);
+            }
+
+            // Validar usuario repetido
+            var existeUsuario = await _context.Usuarios
+                .AnyAsync(u => u.NombreUsuario == model.NombreUsuario && !u.EstaEliminado);
+
+            if (existeUsuario)
+            {
+                ModelState.AddModelError(nameof(model.NombreUsuario), "Ese nombre de usuario ya está en uso.");
+                return View(model);
+            }
+
+            var user = new Usuario
+            {
+                NombreUsuario = model.NombreUsuario,
+                EsAdmin = false,
+                EstaBloqueado = false,
+                EstaEliminado = false
+            };
+
+            user.Contrasena = _passwordHasher.HashPassword(user, model.Password);
+
+            user.Persona = new Persona
+            {
+                Nombre = model.Nombre,
+                Apellido = model.Apellido,
+                CorreoElectronico = model.CorreoElectronico,
+                EsBarbero = false
+            };
+
+            _context.Usuarios.Add(user);
+            await _context.SaveChangesAsync();
+
+            TempData["LoginMessage"] = "Cuenta creada con éxito.";
+            return RedirectToAction("Login");
+        }
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
             if (!ModelState.IsValid)

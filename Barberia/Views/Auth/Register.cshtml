@@ -1,0 +1,98 @@
+﻿@model Barberia.Models.ViewModels.UsuarioAdminCreateViewModel
+
+@{
+    ViewData["Title"] = "Crear cuenta";
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/auth/login.css" asp-append-version="true" />
+}
+
+<div class="login-wrapper">
+    <div class="login-card">
+
+        <!-- HEADER -->
+        <div class="login-header">
+            <div class="login-logo">💈</div>
+            <div>
+                <h1 class="login-title">Barbería</h1>
+                <p class="login-subtitle">Crear una nueva cuenta</p>
+            </div>
+        </div>
+
+        <!-- ALERTAS -->
+        @if (TempData["OK"] != null)
+        {
+            <div class="alert alert-success mb-3">@TempData["OK"]</div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger mb-3">@TempData["Error"]</div>
+        }
+
+        <!-- FORM -->
+        <form asp-action="Register" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+
+            <!-- Apellido -->
+            <div class="mb-3">
+                <label asp-for="Apellido" class="form-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger small"></span>
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-3">
+                <label asp-for="CorreoElectronico" class="form-label"></label>
+                <input asp-for="CorreoElectronico" class="form-control" />
+                <span asp-validation-for="CorreoElectronico" class="text-danger small"></span>
+            </div>
+
+            <!-- Nombre de usuario -->
+            <div class="mb-3">
+                <label asp-for="NombreUsuario" class="form-label"></label>
+                <input asp-for="NombreUsuario" class="form-control" />
+                <span asp-validation-for="NombreUsuario" class="text-danger small"></span>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <!-- Confirmar contraseña -->
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+            </div>
+
+            <!-- BOTÓN -->
+            <button type="submit" class="btn btn-login w-100">
+                Crear cuenta
+            </button>
+        </form>
+
+        <!-- FOOTER -->
+        <div class="login-footer-links">
+            <a asp-controller="Auth" asp-action="Login">¿Ya tenés una cuenta? Iniciar sesión</a>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
