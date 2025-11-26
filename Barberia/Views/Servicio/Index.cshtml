@@ -106,8 +106,11 @@
                         <input type="text" name="nombre" value="@s.Nombre"
                                style="padding:8px 10px; border:1px solid #ccc; border-radius:6px; width:200px;" />
 
-                        <input type="number" step="0.01" name="precio" value="@s.Precio"
+                        <input type="number" name="precio"
+                               value="@s.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture)"
+                               step="0.01"
                                style="padding:8px 10px; border:1px solid #ccc; border-radius:6px; width:140px;" />
+
 
                         <input type="text" name="descripcion" value="@s.Descripcion"
                                style="padding:8px 10px; border:1px solid #ccc; border-radius:6px; width:240px;" />

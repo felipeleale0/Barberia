@@ -56,19 +56,20 @@ namespace Barberia.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Editar(int id, string nombre, decimal precio, string? descripcion)
         {
+            var nuevoPrecio = precio / 100;
             var servicio = await _context.Servicios.FindAsync(id);
 
             if (servicio == null)
                 return NotFound();
 
-            if (string.IsNullOrWhiteSpace(nombre) || precio <= 0)
+            if (string.IsNullOrWhiteSpace(nombre) || nuevoPrecio <= 0)
             {
                 TempData["Error"] = "Datos inválidos.";
                 return RedirectToAction(nameof(Index));
             }
 
             servicio.Nombre = nombre.Trim();
-            servicio.Precio = precio;
+            servicio.Precio = nuevoPrecio;
             servicio.Descripcion = descripcion;
 
             await _context.SaveChangesAsync();

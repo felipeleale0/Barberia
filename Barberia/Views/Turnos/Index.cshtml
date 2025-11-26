@@ -1,11 +1,14 @@
 ﻿@model Barberia.Models.ViewModels.TurnoDisponibleViewModel
 
 @section Styles {
-    <!-- estilos globales de “página tipo Users” -->
     <link rel="stylesheet" href="~/css/admin/users.css" asp-append-version="true" />
-
-    <!-- opcional: estilos específicos de turnos -->
     <link rel="stylesheet" href="~/css/shift/shift.css" asp-append-version="true" />
+}
+
+@{
+    int? reservaId = int.TryParse(Context.Request.Query["reservaId"], out var tmp)
+        ? tmp
+        : null;
 }
 
 <div class="users-page">
@@ -19,18 +22,11 @@
 
         <div class="users-header-actions">
             <form asp-action="Index" method="get" class="filters-form">
-                <div class="date-filter-group">
-                    <label for="fecha" class="date-label">Fecha:</label>
-                    <input type="date"
-                           id="fecha"
-                           name="fecha"
-                           value="@Model.FechaSeleccionada.ToString("yyyy-MM-dd")"
-                           class="date-input" />
-                </div>
-
-                <button type="submit" class="btn btn-filter">
-                    Ver turnos
-                </button>
+                <input type="date"
+                       name="fecha"
+                       value="@Model.FechaSeleccionada.ToString("yyyy-MM-dd")"
+                       class="date-input" />
+                <button type="submit" class="btn btn-filter">Ver turnos</button>
             </form>
         </div>
     </div>
@@ -46,7 +42,7 @@
 
     @if (!Model.Turnos.Any())
     {
-        <p class="users-empty">No hay turnos configurados para esta fecha.</p>
+        <p class="users-empty">No hay turnos para esta fecha.</p>
     }
     else
     {
@@ -54,53 +50,45 @@
             <table class="users-table">
                 <thead>
                     <tr>
-                        <th class="col-hora">Hora</th>
-                        <th class="col-barbero">Barbero</th>
-                        <th class="col-servicio">Servicio</th>
-                        <th class="col-estado col-center">Estado</th>
+                        <th>Hora</th>
+                        <th>Barbero</th>
+                        <th>Servicio</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var t in Model.Turnos)
                     {
                         <tr>
-                            <td class="col-hora col-date">@t.Hora</td>
-                            <td class="col-barbero col-usuario">@t.EmpleadoNombre</td>
-                            <td class="col-servicio">
-                                @if (t.Servicios.Any())
-                                {
-                                    <div class="user-actions user-actions--compact">
-                                        <form asp-action="Reservar" method="post" class="inline-form">
-                                            @Html.AntiForgeryToken()
+                            <td>@t.Hora</td>
+                            <td>@t.EmpleadoNombre</td>
+                            <td>
+                                <form asp-action="Reservar" method="post">
+                                    @Html.AntiForgeryToken()
 
-                                            <input type="hidden" name="turnoId" value="@t.TurnoId" />
+                                    <input type="hidden" name="turnoId" value="@t.TurnoId" />
 
-                                            <select name="servicioId"
-                                                    class="select-filter @(t.EstaDisponible ? "" : "select-disabled")"
-                                                    @(t.EstaDisponible ? "" : "disabled")>
-                                                @foreach (var s in t.Servicios)
-                                                {
-                                                    <option value="@s.Id">
-                                                        @s.Nombre (@s.Precio.ToString("C"))
-                                                    </option>
-                                                }
-                                            </select>
+                                    @if (reservaId != null)
+                                    {
+                                        <input type="hidden" name="reservaAnteriorId" value="@reservaId" />
+                                    }
 
-                                            @if (t.EstaDisponible)
-                                            {
-                                                <button type="submit" class="btn-reservar-turno">
-                                                    Reservar
-                                                </button>
-                                            }
-                                        </form>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <span class="text-muted">Sin servicios</span>
-                                }
+                                    <select name="servicioId"
+                                            class="select-filter @(t.EstaDisponible ? "" : "select-disabled")"
+                                            @(t.EstaDisponible ? "" : "disabled")>
+                                        @foreach (var s in t.Servicios)
+                                        {
+                                            <option value="@s.Id">@s.Nombre (@s.Precio.ToString("C"))</option>
+                                        }
+                                    </select>
+
+                                    @if (t.EstaDisponible)
+                                    {
+                                        <button type="submit" class="btn-reservar-turno">Reservar</button>
+                                    }
+                                </form>
                             </td>
-                            <td class="col-estado col-center">
+                            <td>
                                 @if (t.EstaDisponible)
                                 {
                                     <span class="pill pill-success">Disponible</span>

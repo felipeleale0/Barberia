@@ -58,7 +58,7 @@ namespace Barberia.Controllers
         // POST: /Turno/Reservar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Reservar(int turnoId, int servicioId)
+        public async Task<IActionResult> Reservar(int turnoId, int servicioId, int? reservaAnteriorId)
         {
             var turno = await _context.Turnos
                 .Include(t => t.Reservas)
@@ -71,28 +71,15 @@ namespace Barberia.Controllers
             }
 
             var servicio = await _context.Servicios.FindAsync(servicioId);
-            if (servicio == null)
-            {
-                TempData["Error"] = "Servicio no encontrado.";
-                return RedirectToAction(nameof(Index), new { fecha = turno.Fecha });
-            }
 
-            // Id del usuario logueado (ajustá si tu Identity usa string)
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var usuario = await _context.Usuarios
                 .FirstOrDefaultAsync(u => u.NombreUsuario == User.Identity!.Name);
 
-            if (usuario == null)
-            {
-                TempData["Error"] = "Usuario no encontrado.";
-                return RedirectToAction(nameof(Index), new { fecha = turno.Fecha });
-            }
-
-            // Estado "Reservado" (poné el Id que corresponda en tu tabla Estado)
             var estadoReservado = await _context.Estados
                 .FirstAsync(e => e.Descripcion == "Reservado");
 
-            var reserva = new Reserva
+            // 1. Crear la nueva reserva
+            var reservaNueva = new Reserva
             {
                 TurnoId = turno.Id,
                 UsuarioId = usuario.Id,
@@ -102,12 +89,27 @@ namespace Barberia.Controllers
             };
 
             turno.EstaDisponible = false;
+            _context.Reservas.Add(reservaNueva);
 
-            _context.Reservas.Add(reserva);
+            // 2. Cancelar la reserva anterior (si aplica)
+            if (reservaAnteriorId.HasValue)
+            {
+                var reservaVieja = await _context.Reservas
+                    .Include(r => r.Turno)
+                    .FirstOrDefaultAsync(r => r.Id == reservaAnteriorId.Value);
+
+                if (reservaVieja != null)
+                {
+                    reservaVieja.EstadoId = 3; // Cancelada
+                    reservaVieja.Turno.EstaDisponible = true;
+                }
+            }
+
             await _context.SaveChangesAsync();
 
-            TempData["Ok"] = "Turno reservado correctamente.";
+            TempData["Ok"] = "Turno reagendado correctamente.";
             return RedirectToAction(nameof(Index), new { fecha = turno.Fecha });
         }
+
     }
 }
