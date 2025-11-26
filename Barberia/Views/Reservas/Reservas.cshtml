@@ -4,97 +4,101 @@
     ViewData["Title"] = "Reservas";
 }
 
-<h1>Reservas</h1>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Turno.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Turno.Hora)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Turno)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Servicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CostoTotal)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Turno.Fecha)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Turno.Hora)
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Turno.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Servicio.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CostoTotal)
-            </td>
-                <td>
-                    <div style="display:flex; gap:10px; align-items:center;">
-                        <form asp-action="Cancelar"
-                              asp-route-id="@item.Id"
-                              method="post">
-                            <button type="submit"
-                                    style="
-                        background:#dc3545;
-                        color:white;
-                        border:none;
-                        padding:10px 16px;
-                        border-radius:8px;
-                        font-weight:600;
-                        cursor:pointer;">
-                                🗑 Cancelar
-                            </button>
-                        </form>
-
-                        <form asp-action="Reagendar"
-                              asp-route-id="@item.Id"
-                              method="post">
-                            <button type="submit"
-                                    style="
-                        background:#0d6efd;
-                        color:white;
-                        border:none;
-                        padding:10px 16px;
-                        border-radius:8px;
-                        font-weight:600;
-                        cursor:pointer;">
-                                ✏️ Reagendar
-                            </button>
-                        </form>
-                    </div>
-
-            </td>
-        </tr>
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin/users.css" asp-append-version="true" />
 }
-    </tbody>
-</table>
+
+<div class="page-wrapper users-page">
+
+    <!-- HEADER -->
+    <header class="users-header">
+        <div>
+            <h1 class="page-title">Mis Reservas</h1>
+            <p class="page-subtitle">
+                Consultá, cancelá o reagendá tus turnos fácilmente.
+            </p>
+        </div>
+    </header>
+
+    <!-- TABLA -->
+    <section class="users-table-wrapper">
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Usuario</th>
+                    <th>Estado</th>
+                    <th>Servicio</th>
+                    <th>Costo</th>
+                    <th class="col-actions">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Turno.Fecha.ToShortDateString()</td>
+                        <td>@item.Turno.Hora</td>
+                        <td>@item.Usuario.NombreUsuario</td>
+
+                        <td class="col-center">
+                            @if (item.EstadoId == 3)
+                            {
+                                <span class="pill pill-danger">Cancelada</span>
+                            }
+                            else
+                            {
+                                <span class="pill pill-success">@item.Estado.Descripcion</span>
+                            }
+                        </td>
+
+                        <td>@item.Servicio.Nombre</td>
+                        <td>$ @item.CostoTotal</td>
+
+                        <td class="col-actions">
+                            @if (item.EstadoId != 3)
+                            {
+                                <div class="user-actions user-actions--compact">
+
+                                    <!-- CANCELAR -->
+                                    <form asp-action="Cancelar"
+                                          asp-route-id="@item.Id"
+                                          method="post"
+                                          class="inline-form">
+                                        <button type="submit" class="btn-action btn-soft btn-danger-soft">
+                                            Cancelar
+                                        </button>
+                                    </form>
+
+                                    <!-- REAGENDAR -->
+                                    <form asp-action="Reagendar"
+                                          asp-route-id="@item.Id"
+                                          method="post"
+                                          class="inline-form">
+                                        <button type="submit" class="btn-action btn-soft btn-primary-soft">
+                                            Reagendar
+                                        </button>
+                                    </form>
+
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="text-muted fst-italic"></span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @if (!Model.Any())
+        {
+            <div class="users-empty">
+                <p>No tenés reservas cargadas.</p>
+            </div>
+        }
+    </section>
+</div>
